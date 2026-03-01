@@ -9,7 +9,7 @@ const services = [
     icon: <FileText size={24} />,
     color: 'from-[#E8F0F8] to-[#F4F6F9]',
     itemColor: 'bg-brand-accent',
-    image: '/Accounts ordered and income tax - Copy.png',
+    image: '/accounts-audit-income-tax.png',
     items: [
       'Preparation & Finalisation of Accounts',
       'Income Tax Return Filing & Tax Planning',
@@ -26,7 +26,7 @@ const services = [
     icon: <Building2 size={24} />,
     color: 'from-[#DCE8F0] to-[#EFF3F7]',
     itemColor: 'bg-brand-dark',
-    image: '/GST and corporate.jpg',
+    image: '/gst-corporate-laws.jpg',
     items: [
       'GST Registration, Returns, and Litigation',
       'Company Formation & Striking Off',
@@ -43,7 +43,7 @@ const services = [
     icon: <ShieldCheck size={24} />,
     color: 'from-[#E3EDF5] to-[#F2F5F8]',
     itemColor: 'bg-[#2A648F]',
-    image: '/Registration services.jpg',
+    image: '/registration-services.jpg',
     description: 'End-to-end licensing and statutory compliance.',
     items: [
       'Trade License / Shop & Establishment',
@@ -57,7 +57,7 @@ const services = [
     icon: <Briefcase size={24} />,
     color: 'from-[#EAF0F6] to-[#F5F7FA]',
     itemColor: 'bg-[#3B82B8]',
-    image: '/Other services.jpg',
+    image: '/other-services.jpg',
     description: 'Business Valuation & Financing.',
     items: [
       'Business Valuation',
