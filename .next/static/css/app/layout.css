@@ -936,6 +936,9 @@
   .bg-\[\#3B82B8\] {
     background-color: #3B82B8;
   }
+  .bg-\[\#005A8D\]\/40 {
+    background-color: color-mix(in oklab, #005A8D 40%, transparent);
+  }
   .bg-\[\#FAFAFB\] {
     background-color: #FAFAFB;
   }
@@ -2242,6 +2245,11 @@
   .xl\:-mt-12 {
     @media (width >= 80rem) {
       margin-top: calc(var(--spacing) * -12);
+    }
+  }
+  .xl\:mt-\[-1\.8125rem\] {
+    @media (width >= 80rem) {
+      margin-top: -1.8125rem;
     }
   }
   .xl\:mb-16 {
