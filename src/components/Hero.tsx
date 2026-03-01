@@ -87,7 +87,7 @@ export default function Hero() {
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden rounded-[1rem] bg-brand-light">
           <motion.img
-            src="/hero image.jpg"
+            src="/hero-image.jpg"
             alt="Hero Background"
             initial={{ scale: 1 }}
             animate={{ scale: 1.05 }}
