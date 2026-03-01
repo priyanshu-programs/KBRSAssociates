@@ -66,7 +66,7 @@ const fadeUpItem = {
 
 export default function Experience() {
     return (
-        <section id="experience" className="w-full bg-[#FAFAFB] py-20 lg:py-32 xl:py-40 relative overflow-hidden">
+        <section id="experience" className="w-full bg-[#FAFAFB] pt-20 lg:pt-32 xl:pt-40 pb-0 relative overflow-hidden">
 
             {/* Container holding the Left-Anchored Panel, Right Content, and the Bottom Image
                 Wrapped in a motion.div to orchestrate the stagger children effect */}
