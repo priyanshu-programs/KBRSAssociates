@@ -4,7 +4,6 @@ import Experience from '../components/Experience';
 import Services from '../components/Services';
 import Clientele from '../components/Clientele';
 import Team from '../components/Team';
-import Contact from '../components/Contact';
 
 export default function Home() {
     return (
@@ -15,7 +14,6 @@ export default function Home() {
             <Services />
             <Clientele />
             <Team />
-            <Contact />
         </main>
     );
 }

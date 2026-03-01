@@ -82,7 +82,7 @@ export default function Navbar() {
 
             {/* Text Logo */}
             <div className="flex flex-col justify-center">
-              <span className="font-heading font-semibold text-[0.9375rem] md:text-[1.125rem] leading-none text-black tracking-tight whitespace-nowrap" style={{ fontFamily: 'Georgia, "Playfair Display", serif' }}>
+              <span className="font-heading font-semibold text-[0.9375rem] md:text-[1.125rem] leading-none text-black tracking-tight whitespace-nowrap">
                 KBRS & Associates
               </span>
               <span className="text-[0.5rem] md:text-[0.5625rem] font-sans font-bold uppercase tracking-[0.22em] text-[#005A8D] mt-0.5 whitespace-nowrap">

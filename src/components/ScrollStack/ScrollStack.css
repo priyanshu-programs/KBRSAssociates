@@ -1,0 +1,28 @@
+.scroll-stack-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.scroll-stack-inner {
+    position: relative;
+    padding-bottom: 5vh;
+}
+
+.scroll-stack-card-wrapper {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    will-change: transform;
+}
+
+.scroll-stack-card {
+    will-change: transform, filter;
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    position: relative;
+    transition: filter 0.3s ease;
+    width: 100%;
+}
