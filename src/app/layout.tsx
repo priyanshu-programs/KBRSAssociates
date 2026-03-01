@@ -5,8 +5,11 @@ import Footer from "../components/Footer";
 import SmoothScrolling from "../components/SmoothScrolling";
 
 export const metadata: Metadata = {
-    title: "My Google AI Studio App",
-    description: "App description",
+    title: "KBRS & Associates",
+    description: "KBRS & Associates",
+    icons: {
+        icon: "/logo.jpg",
+    },
 };
 
 export default function RootLayout({
