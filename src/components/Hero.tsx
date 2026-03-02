@@ -108,11 +108,11 @@ export default function Hero() {
         </div>
 
         {/* Content Wrapper */}
-        <div className="relative z-10 w-full h-full flex flex-col justify-between pt-[3.1875rem] pb-8 pl-[3.0625rem] pr-8 md:pr-12">
+        <div className="relative z-10 w-full h-full flex flex-col justify-between pt-[3.1875rem] pb-8 pl-4 pr-4 sm:pl-[3.0625rem] sm:pr-8 md:pr-12">
 
           {/* Main Headline */}
           <div className="max-w-4xl">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-medium leading-[1.05] tracking-tight text-white flex flex-col">
+            <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-medium leading-[1.05] tracking-tight text-white flex flex-col">
               <span className="overflow-hidden pb-2 block">
                 <motion.span variants={textRevealVariants} className="block">Excellence in Service,</motion.span>
               </span>
@@ -136,18 +136,18 @@ export default function Hero() {
         {/* Bottom Right Cutout Area */}
         <motion.div
           variants={cardRevealVariants}
-          className="absolute bottom-0 right-[-1.1875rem] z-20 bg-brand-light pt-4 pl-4 rounded-tl-[1rem]"
+          className="absolute bottom-0 right-[-1.1875rem] z-20 bg-brand-light pt-1.5 pl-1.5 sm:pt-4 sm:pl-4 rounded-tl-[1rem]"
         >
 
           {/* Top Inverted Corner */}
-          <div className="absolute -top-4 right-[1.1875rem] w-4 h-4 pointer-events-none">
+          <div className="absolute -top-1.5 sm:-top-4 right-[1.1875rem] w-1.5 sm:w-4 h-1.5 sm:h-4 pointer-events-none">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-brand-light" preserveAspectRatio="none">
               <path d="M0,100 C55.228475,100 100,55.228475 100,0 L100,100 L0,100 Z" />
             </svg>
           </div>
 
           {/* Left Inverted Corner */}
-          <div className="absolute bottom-0 -left-4 w-4 h-4 pointer-events-none">
+          <div className="absolute bottom-0 -left-1.5 sm:-left-4 w-1.5 sm:w-4 h-1.5 sm:h-4 pointer-events-none">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-brand-light" preserveAspectRatio="none">
               <path d="M100,0 C100,55.228475 55.228475,100 0,100 L100,100 L100,0 Z" />
             </svg>

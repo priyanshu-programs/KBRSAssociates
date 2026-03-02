@@ -132,8 +132,8 @@ export default function Navbar() {
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="lg:hidden bg-white border-t border-brand-dark/5 absolute w-full left-0 mt-2 shadow-lg z-50 rounded-b-2xl origin-top"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1">
-              {navLinks.map((link) => (
+            <div className="px-5 pt-3 pb-5 flex flex-col">
+              {navLinks.map((link, i) => (
                 <a
                   key={link.name}
                   href={link.href}
@@ -141,7 +141,7 @@ export default function Navbar() {
                     setIsOpen(false);
                     handleScrollTo(e, link.href);
                   }}
-                  className="block px-3 py-3 text-base font-medium text-brand-dark hover:bg-brand-light rounded-lg hover-underline-animation w-max"
+                  className={`block w-full px-2 py-4 text-[15px] font-medium text-brand-dark hover:text-brand-accent transition-colors ${i < navLinks.length - 1 ? 'border-b border-brand-dark/8' : ''}`}
                 >
                   {link.name}
                 </a>
