@@ -41,13 +41,16 @@ const ScrollStack = ({
 
             const vh = window.innerHeight;
 
-            wrappers.forEach((wrapper, i) => {
-                const rect = wrapper.getBoundingClientRect();
-                const nextWrapper = wrappers[i + 1];
-                let scale = 1;
+            // 1. READ phase (Get all bounding boxes without modifying DOM)
+            const rects = wrappers.map(w => w.getBoundingClientRect());
 
-                if (nextWrapper) {
-                    const nextRect = nextWrapper.getBoundingClientRect();
+            // 2. CALC phase (Calculate the scales)
+            const scales = wrappers.map((wrapper, i) => {
+                let scale = 1;
+                const nextRect = rects[i + 1];
+
+                if (nextRect) {
+                    const rect = rects[i];
                     // Distance from top of this wrapper to top of the next wrapper
                     const distance = nextRect.top - rect.top;
 
@@ -65,10 +68,14 @@ const ScrollStack = ({
                         scale = Math.max(baseScale, 1 - (progress * (1 - baseScale)));
                     }
                 }
+                return scale;
+            });
 
+            // 3. WRITE phase (Apply all styles at once)
+            wrappers.forEach((wrapper, i) => {
                 const card = wrapper.querySelector('.scroll-stack-card') as HTMLDivElement;
                 if (card) {
-                    card.style.transform = `scale(${Math.round(scale * 1000) / 1000})`;
+                    card.style.transform = `scale(${Math.round(scales[i] * 1000) / 1000}) translateZ(0)`; // Added translateZ(0) for hardware acceleration
                 }
             });
         }

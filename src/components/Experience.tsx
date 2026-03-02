@@ -1,6 +1,7 @@
 "use client";
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import ReactCountUp from 'react-countup';
@@ -48,8 +49,8 @@ const staggerContainer = {
     show: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2, // Delay between each element appearing
-            delayChildren: 0.1,   // Initial delay before stagger starts
+            staggerChildren: 0.2,
+            delayChildren: 0.1,
         }
     }
 };
@@ -60,7 +61,7 @@ const fadeUpItem = {
     show: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } // Custom buttery ease-out curve
+        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
     }
 };
 
@@ -68,8 +69,7 @@ export default function Experience() {
     return (
         <section id="experience" className="w-full bg-[#FAFAFB] pt-20 lg:pt-32 xl:pt-40 pb-0 relative overflow-hidden">
 
-            {/* Container holding the Left-Anchored Panel, Right Content, and the Bottom Image
-                Wrapped in a motion.div to orchestrate the stagger children effect */}
+            {/* Container holding the Left-Anchored Panel, Right Content, and the Bottom Image */}
             <motion.div
                 variants={staggerContainer}
                 initial="hidden"
@@ -79,8 +79,6 @@ export default function Experience() {
             >
                 {/* Horizontal Split for Left Panel & Right Content */}
                 <div className="flex flex-col xl:flex-row items-stretch w-full max-w-[1920px] mx-auto xl:pr-[1.1875rem] relative xl:gap-[15.375rem] z-20">
-
-
 
                     {/* ── LEFT PANEL (~769px by 311px) ── */}
                     <motion.div
@@ -144,7 +142,7 @@ export default function Experience() {
                                 className="mb-12 xl:mb-16 relative z-10"
                             >
                                 <motion.p variants={fadeUpItem} className="text-[#2B3042]/80 text-[15px] sm:text-[17px] font-medium tracking-wide leading-relaxed">
-                                    We deliver comprehensive, technology-driven, and client-focused financial solutions designed to elevate your business trajectory.
+                                    We deliver comprehensive, technology-driven, and client-focused financial solutions.
                                 </motion.p>
                             </motion.div>
 
@@ -177,7 +175,13 @@ export default function Experience() {
                                                 }}
                                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                             >
-                                                <img src={src} alt="" className="w-full h-full object-cover" />
+                                                <Image
+                                                    src={src}
+                                                    alt=""
+                                                    fill
+                                                    sizes="64px"
+                                                    className="object-cover"
+                                                />
                                             </motion.div>
                                         ))}
                                     </motion.div>
@@ -235,10 +239,12 @@ export default function Experience() {
                 >
                     <div className="w-full max-w-[1920px] mx-auto px-6 sm:px-12 xl:px-0">
                         <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
-                            <img
+                            <Image
                                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
                                 alt="Corporate Building Setup"
-                                className="w-full h-full object-cover"
+                                fill
+                                sizes="100vw"
+                                className="object-cover"
                             />
                             {/* Blueish tint overlay */}
                             <div className="absolute inset-0 bg-[#005A8D]/40 mix-blend-multiply pointer-events-none" />
