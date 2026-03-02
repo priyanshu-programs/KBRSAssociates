@@ -164,7 +164,6 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
 
         {/* LEFT — photo */}
         <motion.div
-          layoutId={`photo-${member.id}`}
           className="relative sm:w-56 w-full h-[240px] sm:h-auto shrink-0"
           style={{ background: '#c8d8e8' }}
           transition={{ type: 'spring', damping: 32, stiffness: 140, mass: 1.2 }}
@@ -293,7 +292,6 @@ function ProfileCard({
 
         {/* Floating photo — lifts on hover */}
         <motion.div
-          layoutId={`photo-${member.id}`}
           className="absolute top-0 left-1/2 z-20 overflow-hidden rounded-[1.4rem]"
           style={{
             width: PHOTO_W, height: PHOTO_H, marginLeft: -(PHOTO_W / 2),
