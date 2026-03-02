@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, FileText, Building2, ShieldCheck, Briefcase } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useLenis } from 'lenis/react';
 import type { ServiceDetail } from '../data/serviceDetails';
 
 const iconMap = { FileText, Building2, ShieldCheck, Briefcase } as const;
@@ -22,7 +23,7 @@ const fadeUp = {
 
 export default function ServiceDetailPage({ service }: { service: ServiceDetail }) {
     const Icon = iconMap[service.iconName];
-
+    const lenis = useLenis();
 
     return (
         <main className="bg-brand-light min-h-screen">
@@ -196,13 +197,13 @@ export default function ServiceDetailPage({ service }: { service: ServiceDetail 
                                     Let our experts help you navigate {service.title.toLowerCase()} with confidence and clarity.
                                 </p>
                             </div>
-                            <Link
-                                href="/#contact"
-                                className="inline-flex items-center gap-3 bg-white text-brand-dark font-semibold text-sm px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300 whitespace-nowrap group"
+                            <button
+                                onClick={() => lenis?.scrollTo('#footer')}
+                                className="inline-flex items-center gap-3 bg-white text-brand-dark font-semibold text-sm px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300 whitespace-nowrap group cursor-pointer"
                             >
                                 Get in touch
                                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-                            </Link>
+                            </button>
                         </div>
                     </motion.div>
                 </div>

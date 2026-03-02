@@ -126,7 +126,7 @@ export default function Hero() {
           </div>
 
           {/* Bottom Left: Scroll Down */}
-          <motion.div variants={fadeUpVariants} className="flex items-center gap-2 text-white/80 pb-2">
+          <motion.div variants={fadeUpVariants} className="hidden sm:flex items-center gap-2 text-white/80 pb-2">
             <Mouse size={20} strokeWidth={1.5} className="animate-bounce" />
             <span className="text-sm font-medium">Scroll down</span>
           </motion.div>
@@ -136,7 +136,7 @@ export default function Hero() {
         {/* Bottom Right Cutout Area */}
         <motion.div
           variants={cardRevealVariants}
-          className="absolute bottom-0 right-[-1.1875rem] z-20 bg-brand-light pt-1.5 pl-1.5 sm:pt-4 sm:pl-4 rounded-tl-[1rem]"
+          className="absolute bottom-0 right-[-1.1875rem] max-[30rem]:left-8 z-20 bg-brand-light pt-1.5 pl-1.5 sm:pt-4 sm:pl-4 rounded-tl-[1rem]"
         >
 
           {/* Top Inverted Corner */}
