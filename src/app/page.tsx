@@ -1,9 +1,13 @@
 import Hero from '../components/Hero';
-import Vision from '../components/Vision';
-import Experience from '../components/Experience';
-import Services from '../components/Services';
-import Clientele from '../components/Clientele';
-import Team from '../components/Team';
+import dynamic from 'next/dynamic';
+
+// Dynamically import below-the-fold sections so they don't bloat the initial JS bundle.
+// Hero is eagerly loaded since it's the LCP element.
+const Vision = dynamic(() => import('../components/Vision'));
+const Experience = dynamic(() => import('../components/Experience'));
+const Services = dynamic(() => import('../components/Services'));
+const Clientele = dynamic(() => import('../components/Clientele'));
+const Team = dynamic(() => import('../components/Team'));
 
 export default function Home() {
     return (

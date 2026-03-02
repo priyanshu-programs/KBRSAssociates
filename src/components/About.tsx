@@ -1,5 +1,4 @@
 "use client";
-import { Scale } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function About() {
@@ -16,20 +15,11 @@ export default function About() {
           >
             <div className="absolute -inset-4 bg-brand-accent/5 rounded-3xl -z-10 transform -rotate-3"></div>
             <img
-              src="https://picsum.photos/seed/justice/800/1000?blur=1"
-              alt="Justice Scale"
-              referrerPolicy="no-referrer"
+              src="/about-us.png"
+              alt="Professional financial workspace"
               className="rounded-2xl shadow-2xl object-cover w-full h-[600px]"
             />
-            <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-lg flex items-center gap-4">
-              <div className="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center text-white">
-                <Scale size={24} />
-              </div>
-              <div>
-                <p className="text-sm font-bold text-brand-dark">Justice Scale</p>
-                <p className="text-xs text-brand-gray">Commitment to Compliance</p>
-              </div>
-            </div>
+
           </motion.div>
 
           <motion.div
@@ -49,10 +39,10 @@ export default function About() {
 
             <div className="space-y-6 text-lg text-brand-dark/70 leading-relaxed">
               <p>
-                KBRS is a progressive Chartered Accountancy firm established by two dynamic finance professionals with a shared vision—to deliver comprehensive, technology-driven, and client-focused financial solutions.
+                <span className="font-bold">KBRS</span> is a progressive Chartered Accountancy firm established by two dynamic finance professionals with a shared vision—to deliver comprehensive, technology-driven, and client-focused financial solutions.
               </p>
               <p>
-                With over three decades of combined experience across global banking, taxation, audit, compliance, and advisory domains, the firm offers an integrated suite of services tailored for Individuals, Corporates, LLPs, Partnership Firms, Trusts, and Societies.
+                With over three decades of combined experience across global banking, taxation, audit, compliance, and advisory domains, the firm offers an integrated suite of services tailored for <span className="font-semibold">Individuals, Corporates, LLPs, Partnership Firms, Trusts, and Societies</span>.
               </p>
             </div>
 
@@ -72,4 +62,3 @@ export default function About() {
     </section>
   );
 }
-

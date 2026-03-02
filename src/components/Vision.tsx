@@ -39,10 +39,12 @@ export default function Vision() {
     offset: ["start 0.9", "center 0.4"],
   });
 
+  // Increased stiffness + damping = spring settles faster with fewer iterations per frame.
+  // restDelta raised slightly: stops the spring earlier, reducing unnecessary rAF frames.
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 25,
-    restDelta: 0.001,
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.003,
   });
 
   return (
@@ -71,7 +73,7 @@ export default function Vision() {
             className="w-12 h-px bg-brand-accent/40 mx-auto mb-12 origin-left"
           />
 
-          {/* Scroll-driven word-by-word text reveal — opacity + blur + Y */}
+          {/* Scroll-driven word-by-word text reveal */}
           <h2
             ref={textRef}
             className="flex flex-wrap justify-center gap-x-[0.25em] gap-y-3 text-3xl sm:text-4xl lg:text-6xl font-heading font-medium leading-[1.35]"
@@ -80,7 +82,7 @@ export default function Vision() {
               className="text-brand-gray/30 leading-none"
               style={{ opacity: useTransform(smoothProgress, [0, 0.05], [0.1, 0.4]) }}
             >
-              "
+              &ldquo;
             </motion.span>
             {words.map((word, i) => {
               const start = i / words.length;
@@ -97,7 +99,7 @@ export default function Vision() {
                       className="text-brand-gray/30 leading-none pl-[0.1em]"
                       style={{ opacity: useTransform(smoothProgress, [0.95, 1], [0, 0.4]) }}
                     >
-                      "
+                      &rdquo;
                     </motion.span>
                   </span>
                 );
@@ -116,7 +118,7 @@ export default function Vision() {
   );
 }
 
-/* ── Word Component — opacity + Y lift + blur reveal ── */
+/* ── Word Component — opacity + Y lift reveal ── */
 const Word = ({
   children,
   progress,
@@ -130,21 +132,23 @@ const Word = ({
 }) => {
   const opacity = useTransform(progress, range, [0.07, 1]);
   const y = useTransform(progress, range, ["0.4em", "0em"]);
-  const scale = useTransform(progress, range, [0.97, 1]);
+  // Only highlight words get scale — reduces the number of active transforms
+  const scale = isHighlight ? useTransform(progress, range, [0.97, 1]) : undefined;
   const baseColor = isHighlight ? "text-brand-accent" : "text-brand-dark";
 
   return (
     <span className="relative inline-block">
-      {/* ghost placeholder so layout doesn't shift */}
-      <span className={`invisible`}>{children}</span>
+      {/* ghost placeholder to prevent layout shift */}
+      <span className="invisible">{children}</span>
       <motion.span
         style={{
           opacity,
           y,
-          scale: isHighlight ? scale : undefined,
+          scale,
           position: "absolute",
           left: 0,
           top: 0,
+          willChange: "opacity, transform",
         }}
         className={baseColor}
       >

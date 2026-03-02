@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { motion, Variants } from 'motion/react';
 import { ArrowRight, Mouse } from 'lucide-react';
 import { useLenis } from 'lenis/react';
@@ -28,13 +29,14 @@ const textRevealVariants: Variants = {
   }
 };
 
+// Removed filter:"blur(10px)" — CSS blur forces full GPU repaint every frame and kills FPS.
+// opacity + y + scale alone gives equally premium feel at a fraction of the cost.
 const cardRevealVariants: Variants = {
-  hidden: { opacity: 0, y: 40, scale: 0.96, filter: "blur(10px)" },
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: "blur(0px)",
     transition: {
       duration: 1.4,
       ease: [0.16, 1, 0.3, 1],
@@ -86,14 +88,22 @@ export default function Hero() {
 
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden rounded-[1rem] bg-brand-light">
-          <motion.img
-            src="/hero-image.jpg"
-            alt="Hero Background"
+          {/* Wrap in motion.div so we can still animate scale without blur penalty */}
+          <motion.div
             initial={{ scale: 1 }}
             animate={{ scale: 1.05 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="w-full h-full object-cover object-center md:object-top"
-          />
+            className="absolute inset-0"
+          >
+            <Image
+              src="/hero-image.jpg"
+              alt="Hero Background"
+              fill
+              priority
+              sizes="(max-width: 1920px) 100vw, 1920px"
+              className="object-cover object-center md:object-top"
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-black/50 mix-blend-multiply"></div>
         </div>
 

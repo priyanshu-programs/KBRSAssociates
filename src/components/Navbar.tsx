@@ -14,9 +14,12 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(prev => {
+        const next = window.scrollY > 20;
+        return prev !== next ? next : prev;
+      });
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -24,8 +27,8 @@ export default function Navbar() {
     { name: 'Home', href: '#home' },
     { name: 'About us', href: '#experience' },
     { name: 'Services', href: '#services' },
-    { name: 'Team', href: '#team' },
-    { name: 'Clientele', href: '#clientele' }
+    { name: 'Clientele', href: '#clientele' },
+    { name: 'Team', href: '#team' }
   ];
 
   const lenis = useLenis();
