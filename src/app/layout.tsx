@@ -31,11 +31,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+        <html lang="en" className={`${inter.variable} ${playfair.variable} overflow-x-hidden`}>
             <body className="min-h-screen bg-brand-light font-sans text-brand-dark selection:bg-brand-accent selection:text-brand-lightest antialiased overflow-x-hidden">
                 <SmoothScrolling>
                     <Navbar />
-                    {children}
+                    <div className="overflow-x-hidden w-full relative">
+                        {children}
+                    </div>
                     <Footer />
                 </SmoothScrolling>
             </body>
