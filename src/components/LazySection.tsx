@@ -15,14 +15,14 @@ export default function LazySection({ children }: { children: ReactNode }) {
           observer.disconnect();
         }
       },
-      { rootMargin: '200px' }
+      { rootMargin: '1500px' }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div ref={ref} style={{ minHeight: visible ? undefined : '50vh' }}>
+    <div ref={ref} style={{ minHeight: visible ? undefined : '1px' }}>
       {visible ? children : null}
     </div>
   );

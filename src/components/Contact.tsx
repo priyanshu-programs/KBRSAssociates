@@ -3,11 +3,11 @@ import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-brand-dark text-brand-lightest relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-24 lg:py-32 bg-brand-dark text-brand-lightest relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/20 to-transparent opacity-50"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-24">
           <div className="flex flex-col items-start w-full">
             <div className="flex items-center gap-4 sm:gap-6 mb-6">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold uppercase text-brand-lightest tracking-tight">
@@ -60,7 +60,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="bg-brand-lightest rounded-3xl p-8 sm:p-12 shadow-2xl relative">
+          <div className="bg-brand-lightest rounded-2xl sm:rounded-3xl p-6 sm:p-12 shadow-2xl relative">
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-accent/10 rounded-full blur-2xl -z-10"></div>
 
             <form className="space-y-6">

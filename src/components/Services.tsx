@@ -287,7 +287,7 @@ export default function Services() {
       <div className="pointer-events-none absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
         style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
 
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20 mt-8 lg:mt-16 relative z-10">
+      <div className="max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-12 2xl:px-20 mt-4 sm:mt-8 lg:mt-16 relative z-10">
 
         {/* Header Block */}
         <motion.div
@@ -295,7 +295,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-14 lg:mb-24 text-center flex flex-col items-center justify-center w-full"
+          className="mb-8 sm:mb-14 lg:mb-24 text-center flex flex-col items-center justify-center w-full"
         >
           <div className="flex items-center gap-4 sm:gap-6 mb-6">
             <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />

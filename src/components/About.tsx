@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 
 export default function About() {
   return (
-    <section id="about" className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
+    <section id="about" className="py-16 sm:py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
 
       {/* Minimal decorative blobs */}
       <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
@@ -11,8 +11,8 @@ export default function About() {
       <div className="pointer-events-none absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
         style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -24,7 +24,7 @@ export default function About() {
             <img
               src="https://res.cloudinary.com/ddooeqf5m/image/upload/v1772983047/Whisk_f47bf8a8ad77fa48c164673cabd98f34dr_ufulms.jpg"
               alt="Professional financial workspace"
-              className="rounded-2xl shadow-2xl object-cover object-[60%_center] w-full h-[600px]"
+              className="rounded-2xl shadow-2xl object-cover object-[60%_center] w-full h-[300px] sm:h-[450px] lg:h-[600px]"
             />
 
           </motion.div>

@@ -58,7 +58,7 @@ const clients = [
 
 export default function CustomerType() {
   return (
-    <section id="customer-type" className="py-24 lg:py-32 relative text-brand-dark" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
+    <section id="customer-type" className="py-16 sm:py-24 lg:py-32 relative text-brand-dark" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
 
       {/* Minimal decorative blobs */}
       <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
@@ -66,7 +66,7 @@ export default function CustomerType() {
       <div className="pointer-events-none absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
         style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <motion.div
@@ -99,7 +99,7 @@ export default function CustomerType() {
           {clients.map((client) => (
             <ScrollStackItem key={client.id}>
               <div
-                className="relative overflow-hidden rounded-[1.5rem] lg:rounded-[2.5rem] p-6 sm:p-10 lg:p-12 shadow-[0_8px_40px_rgba(0,0,0,0.04)] border border-brand-dark/5 bg-gray-900 flex flex-col justify-center h-[60vh] min-h-[350px] max-h-[550px] w-full"
+                className="relative overflow-hidden rounded-[1.25rem] sm:rounded-[1.5rem] lg:rounded-[2.5rem] p-5 sm:p-10 lg:p-12 shadow-[0_8px_40px_rgba(0,0,0,0.04)] border border-brand-dark/5 bg-gray-900 flex flex-col justify-center h-[50vh] sm:h-[60vh] min-h-[280px] sm:min-h-[350px] max-h-[450px] sm:max-h-[550px] w-full"
               >
                 {/* Background Image — Next.js Image for lazy loading & WebP */}
                 <Image
@@ -128,14 +128,14 @@ export default function CustomerType() {
                       whileInView={{ scale: 1, opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                       viewport={{ once: true }}
-                      className="w-20 h-20 lg:w-28 lg:h-28 rounded-full flex items-center justify-center text-brand-lightest border-[1.5px] border-brand-lightest/30 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-110"
+                      className="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 rounded-full flex items-center justify-center text-brand-lightest border-[1.5px] border-brand-lightest/30 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-110"
                       style={{ background: `linear-gradient(135deg, ${client.accent}D9, ${client.accent}66)` }}
                     >
                       <div className="scale-75 lg:scale-100">
                         {client.icon}
                       </div>
                     </motion.div>
-                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-lightest leading-tight drop-shadow-lg max-w-4xl mx-auto">
+                    <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-lightest leading-tight drop-shadow-lg max-w-4xl mx-auto">
                       {client.title}
                     </h3>
                   </div>
