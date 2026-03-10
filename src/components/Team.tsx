@@ -249,7 +249,7 @@ function ProfileCard({
 
         {/* Card body — plain div, no layoutId (only photo uses layoutId) */}
         <div
-          className="relative rounded-[2rem] flex flex-col items-center pb-16 w-[270px] sm:w-[310px]"
+          className="relative overflow-hidden rounded-[2rem] flex flex-col items-center pb-16 w-full max-w-[310px]"
           style={{
             paddingTop: PHOTO_H - OVERFLOW + 48,
             background: 'linear-gradient(160deg, #1a5278 0%, #0f3454 100%)',
@@ -323,7 +323,7 @@ export default function Team() {
         {openMember && <MemberModal member={openMember} onClose={closeModal} />}
       </AnimatePresence>
 
-      <section id="team" className="py-24 lg:py-32 relative overflow-hidden"
+      <section id="team" className="py-16 sm:py-24 lg:py-32 relative overflow-hidden"
         style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
 
         {/* Minimal decorative blobs */}
@@ -332,7 +332,7 @@ export default function Team() {
         <div className="pointer-events-none absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
           style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -353,7 +353,7 @@ export default function Team() {
             </div>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-12 lg:gap-20">
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-12 lg:gap-20">
             {team.map((member, index) => (
               <ProfileCard
                 key={member.id}

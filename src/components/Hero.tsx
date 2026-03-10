@@ -84,7 +84,7 @@ export default function Hero() {
       const distance = Math.abs(target.getBoundingClientRect().top);
       const duration = Math.min(3.2, Math.max(1.2, distance / 900));
       if (lenis) {
-        lenis.scrollTo(target, { offset: 0, duration });
+        lenis.scrollTo('#footer', { offset: 0, duration });
       } else {
         target.scrollIntoView({ behavior: 'smooth' });
       }
@@ -92,14 +92,14 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="pt-0 pb-8 px-[1.1875rem] max-w-[1920px] mx-auto">
+    <section id="home" className="pt-0 pb-4 sm:pb-8 px-3 sm:px-[1.1875rem] max-w-[1920px] mx-auto">
       {/* Main Hero Card Container */}
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-20%" }}
         variants={containerVariants}
-        className="relative w-full h-[80vh] min-h-[39rem] max-h-[51.5rem]"
+        className="relative w-full h-[85vh] sm:h-[80vh] min-h-[30rem] sm:min-h-[39rem] max-h-[51.5rem]"
       >
 
         {/* Background */}
@@ -145,11 +145,11 @@ export default function Hero() {
         </div>
 
         {/* Content Wrapper */}
-        <div className="relative z-10 w-full h-full flex flex-col justify-between pt-[3.1875rem] pb-8 pl-4 pr-4 sm:pl-[3.0625rem] sm:pr-8 md:pr-12">
+        <div className="relative z-10 w-full h-full flex flex-col justify-between pt-[3.1875rem] pb-20 sm:pb-8 pl-4 pr-4 sm:pl-[3.0625rem] sm:pr-8 md:pr-12">
 
           {/* Main Headline */}
           <div className="max-w-4xl">
-            <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-medium leading-[1.05] tracking-tight text-brand-lightest flex flex-col">
+            <h1 className="text-[1.75rem] xs:text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-medium leading-[1.05] tracking-tight text-brand-lightest flex flex-col">
               <span className="overflow-hidden pb-2 block">
                 <motion.span variants={textRevealVariants} className="block">Excellence in Service,</motion.span>
               </span>
@@ -173,7 +173,7 @@ export default function Hero() {
         {/* Bottom Right Cutout Area */}
         <motion.div
           variants={cardRevealVariants}
-          className="absolute bottom-0 right-0 sm:right-[-1.1875rem] z-20 bg-section-a pt-1.5 pl-1.5 sm:pt-4 sm:pl-4 rounded-tl-[1rem]"
+          className="absolute bottom-0 right-0 sm:right-[-1.1875rem] z-20 bg-section-a pt-2 pl-2 sm:pt-4 sm:pl-4 rounded-tl-[1rem]"
         >
 
           {/* Top Inverted Corner */}
@@ -191,8 +191,8 @@ export default function Hero() {
           </div>
 
           {/* Blue Content Card */}
-          <div className="rounded-tl-[1rem] rounded-bl-[1rem] p-5 sm:p-8 md:p-10 w-full max-w-[85vw] sm:max-w-[450px] lg:max-w-[550px] shadow-lg" style={{ background: 'linear-gradient(0deg, #1A4A6D 0%, #2A648F 50%, #3B82B8 100%)' }}>
-            <p className="text-brand-lightest/90 text-[15px] md:text-base leading-relaxed mb-8 font-light">
+          <div className="rounded-tl-[1rem] rounded-bl-[1rem] p-4 sm:p-8 md:p-10 w-full max-w-[75vw] sm:max-w-[450px] lg:max-w-[550px] shadow-lg" style={{ background: 'linear-gradient(0deg, #1A4A6D 0%, #2A648F 50%, #3B82B8 100%)' }}>
+            <p className="text-brand-lightest/90 text-[13px] sm:text-[15px] md:text-base leading-relaxed mb-4 sm:mb-8 font-light">
               We transform client expectations into sustainable reality through a blend of subject matter expertise and exceptional service.
             </p>
 

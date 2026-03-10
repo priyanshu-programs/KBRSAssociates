@@ -83,7 +83,7 @@ export default function Experience() {
     };
 
     return (
-        <section id="experience" className="w-full bg-section-a pt-20 lg:pt-32 xl:pt-40 pb-0 relative overflow-hidden">
+        <section id="experience" className="w-full bg-section-a pt-12 sm:pt-20 lg:pt-32 xl:pt-40 pb-0 relative overflow-hidden">
 
             {/* Container holding the Left-Anchored Panel, Right Content, and the Bottom Image */}
             <motion.div
@@ -102,7 +102,7 @@ export default function Experience() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, margin: "-10%" }}
-                        className="relative w-full xl:w-[48rem] h-auto xl:min-h-[19.5rem] shrink-0 flex items-center justify-center px-6 sm:px-12 xl:px-20 py-16 xl:py-0 self-start xl:self-auto mb-0 z-20"
+                        className="relative w-full xl:w-[48rem] h-auto xl:min-h-[19.5rem] shrink-0 flex items-center justify-center px-4 sm:px-12 xl:px-20 py-8 sm:py-16 xl:py-0 self-start xl:self-auto mb-0 z-20"
                     >
 
                         {/* Card Background */}
@@ -110,25 +110,25 @@ export default function Experience() {
                             className="absolute inset-0 rounded-none xl:rounded-tr-[1rem] z-10 bg-brand-dark"
                         />
 
-                        <div className="relative z-20 flex flex-col sm:flex-row items-center justify-between w-full h-full gap-12 sm:gap-6">
+                        <div className="relative z-20 flex flex-row flex-wrap sm:flex-nowrap items-center justify-between w-full h-full gap-6 sm:gap-6">
                             {stats.map((stat, i) => (
-                                <div key={i} className="flex flex-col items-center sm:items-start text-center sm:text-left flex-1">
+                                <div key={i} className="flex flex-col items-center text-center flex-1 min-w-[90px]">
 
                                     {/* 1. Label moved to the top as a heading */}
-                                    <h3 className="text-brand-lightest/75 text-[15px] sm:text-[17px] font-medium tracking-wide mb-6">
+                                    <h3 className="text-brand-lightest/75 text-[12px] sm:text-[15px] md:text-[17px] font-medium tracking-wide mb-2 sm:mb-6">
                                         {stat.label}
                                     </h3>
 
                                     {/* 2. Value dynamically counts up with subtle gradient */}
                                     <span
-                                        className="font-heading font-extralight bg-clip-text text-transparent bg-gradient-to-br from-brand-lightest via-brand-lightest/90 to-brand-lightest/50 leading-tight pb-2 mb-2 inline-block relative -ml-1"
-                                        style={{ fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
+                                        className="font-heading font-extralight bg-clip-text text-transparent bg-gradient-to-br from-brand-lightest via-brand-lightest/90 to-brand-lightest/50 leading-tight pb-1 sm:pb-2 mb-1 sm:mb-2 inline-block relative -ml-1"
+                                        style={{ fontSize: 'clamp(2.25rem, 6vw, 5.5rem)' }}
                                     >
                                         <AnimatedStat text={stat.value} />
                                     </span>
 
                                     {/* 3. Unit preserved below */}
-                                    <span className="text-brand-accent text-[11px] sm:text-xs font-bold leading-relaxed uppercase tracking-widest max-w-[160px]">
+                                    <span className="text-brand-accent text-[9px] sm:text-[11px] md:text-xs font-bold leading-relaxed uppercase tracking-widest max-w-[160px]">
                                         {stat.unit}
                                     </span>
 
@@ -139,12 +139,12 @@ export default function Experience() {
                     </motion.div>
 
                     {/* ── RIGHT MAIN CONTENT ── */}
-                    <div className="flex-1 relative z-30 w-full flex flex-col justify-center px-6 sm:px-12 xl:px-0 py-12 xl:py-0">
+                    <div className="flex-1 relative z-30 w-full flex flex-col justify-center px-4 sm:px-12 xl:px-0 py-8 sm:py-12 xl:py-0">
 
                         {/* Subtle aesthetic backdrop blur/glow for premium feel */}
                         <div className="absolute top-1/2 right-0 w-64 h-64 bg-brand-dark/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
 
-                        <div className="w-full max-w-2xl xl:ml-auto -mt-4 sm:-mt-8 xl:-mt-12">
+                        <div className="w-full max-w-2xl xl:ml-auto mt-0 sm:-mt-8 xl:-mt-12">
 
                             {/* Staggered Typography Reveal */}
                             <motion.div

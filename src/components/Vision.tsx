@@ -56,7 +56,7 @@ export default function Vision() {
   });
 
   return (
-    <section ref={sectionRef} className="pt-16 pb-32 lg:pt-24 lg:pb-48 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
+    <section ref={sectionRef} className="pt-10 pb-20 sm:pt-16 sm:pb-32 lg:pt-24 lg:pb-48 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
 
       {/* Minimal decorative blobs */}
       <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
@@ -65,7 +65,7 @@ export default function Vision() {
         style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
 
       {/* Huge Sliding Ticker for "OUR VISION" */}
-      <div className="w-full flex mb-20 md:mb-28 lg:mb-40 relative z-10">
+      <div className="w-full flex mb-12 sm:mb-20 md:mb-28 lg:mb-40 relative z-10">
         <motion.div
           className="flex whitespace-nowrap w-max"
           style={{ x: tickerX }}
@@ -89,7 +89,7 @@ export default function Vision() {
         </motion.div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-5xl mx-auto">
 
           {/* Decorative line that grows in */}
@@ -104,7 +104,7 @@ export default function Vision() {
           {/* Scroll-driven word-by-word text reveal */}
           <p
             ref={textRef}
-            className="flex flex-wrap justify-center gap-x-[0.25em] gap-y-3 text-3xl sm:text-4xl lg:text-6xl font-heading font-medium leading-[1.35]"
+            className="flex flex-wrap justify-center gap-x-[0.25em] gap-y-2 sm:gap-y-3 text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-heading font-medium leading-[1.35]"
           >
             <motion.span
               className="text-brand-gray/30 leading-none"

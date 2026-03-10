@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer id="footer" className="relative bg-brand-dark text-brand-lightest/70 pt-20 pb-8 overflow-hidden z-10 selection:bg-brand-accent selection:text-brand-lightest">
+    <footer id="footer" className="relative bg-brand-dark text-brand-lightest/70 pt-12 sm:pt-20 pb-6 sm:pb-8 overflow-hidden z-10 selection:bg-brand-accent selection:text-brand-lightest">
 
       {/* Giant Watermark Background Ticker */}
       <div
@@ -29,13 +29,13 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col min-h-[400px]">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10 flex flex-col min-h-[300px] sm:min-h-[400px]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-auto pb-16 justify-between w-full"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-8 mb-auto pb-12 sm:pb-16 justify-between w-full"
         >
           {/* Column 1: Brand Info */}
           <div className="flex flex-col gap-6 lg:col-span-1">
