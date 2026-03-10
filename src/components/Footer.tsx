@@ -4,7 +4,13 @@ import { Linkedin } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 
-// Footer ticker CSS animation is in globals.css (@keyframes ticker-scroll)
+/**
+ * Site footer component that renders a decorative watermark ticker, a responsive four-column content grid (brand, contact, useful links, LinkedIn) and an animated bottom rights bar.
+ *
+ * The watermark ticker is purely decorative and non-interactive. Layout, spacing, and entrance animations are handled via Tailwind CSS and motion/react.
+ *
+ * @returns The footer React element containing the site's footer layout and content.
+ */
 
 
 export default function Footer() {

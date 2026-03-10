@@ -66,6 +66,13 @@ const HERO_IMAGES = [
   "https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772983047/Whisk_f47bf8a8ad77fa48c164673cabd98f34dr_ufulms.jpg"
 ];
 
+/**
+ * Renders the full-width hero section with animated background images, a multi-line headline, a scroll indicator, and an interactive bottom-right contact card that scrolls to the footer.
+ *
+ * The component cycles background images every 5 seconds and uses Lenis (when available) or native smooth scrolling when the contact card is activated.
+ *
+ * @returns The React element representing the hero section.
+ */
 export default function Hero() {
   const lenis = useLenis();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

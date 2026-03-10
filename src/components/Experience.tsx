@@ -66,6 +66,13 @@ const fadeUpItem = {
     }
 };
 
+/**
+ * Render the "Experience" section containing animated statistics, interactive avatars, a gooey "About us" CTA, and a full-width hero image.
+ *
+ * Includes animated count-up stats, overlapping avatars that scroll to the `#team` anchor when clicked (uses Lenis if available), and a stylized link to the About page.
+ *
+ * @returns The JSX element for the Experience section
+ */
 export default function Experience() {
     const lenis = useLenis();
 

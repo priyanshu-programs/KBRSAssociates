@@ -31,6 +31,13 @@ const words = [
   { text: "solutions.", highlight: false },
 ];
 
+/**
+ * Render the "Our Vision" section containing a repeating sliding ticker and a scroll-driven, word-by-word text reveal.
+ *
+ * The section includes subtle decorative backgrounds, a large horizontally scrolling "Our Vision" ticker, a growing accent line, and a quoted paragraph where each word fades and rises into view based on scroll progress.
+ *
+ * @returns The Vision section as a React element
+ */
 export default function Vision() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);

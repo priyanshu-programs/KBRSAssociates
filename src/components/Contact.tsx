@@ -1,6 +1,15 @@
 "use client";
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
 
+/**
+ * Render the Contact section with contact details and a message form.
+ *
+ * Renders a two-column contact area: left column with actionable contact methods (email, phone, address)
+ * and right column with a styled contact form (name, email, message, privacy checkbox, submit button).
+ * The form is static and does not include a submission handler.
+ *
+ * @returns A JSX element representing the complete contact section with contact actions and a non-functional contact form.
+ */
 export default function Contact() {
   return (
     <section id="contact" className="py-16 sm:py-24 lg:py-32 bg-brand-dark text-brand-lightest relative overflow-hidden">
