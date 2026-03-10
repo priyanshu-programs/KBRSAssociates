@@ -21,7 +21,7 @@ const services: ServiceItem[] = [
     slug: 'accounts-audit-income-tax',
     icon: <FileText size={24} />,
     itemColor: 'bg-brand-accent',
-    image: '/accounts-audit-income-tax.png',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988897/accounts-audit-income-tax_pb9fh7.png',
     items: [
       'Preparation & Finalisation of Accounts',
       'Income Tax Return Filing & Tax Planning',
@@ -38,15 +38,14 @@ const services: ServiceItem[] = [
     slug: 'gst-corporate-laws',
     icon: <Building2 size={24} />,
     itemColor: 'bg-brand-dark',
-    image: '/gst-corporate-laws.jpg',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988896/gst-corporate-laws_ljbr92.jpg',
     items: [
       'GST Registration, Returns, and Litigation',
       'Company Formation & Striking Off',
       'Partnerships & LLP Formation',
       'Trust Formation & Advisory',
       'ROC Filings',
-      'GST Annual Audits',
-      'Notices & Representation',
+      'GST Annual Audits, Notices & Representation',
       'Corporate Governance & Compliance Advisory',
     ],
   },
@@ -55,7 +54,7 @@ const services: ServiceItem[] = [
     slug: 'registration-services',
     icon: <ShieldCheck size={24} />,
     itemColor: 'bg-[#2A648F]',
-    image: '/registration-services.jpg',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988931/registration-services_mlpft3.jpg',
     items: [
       'Trade License / Shop & Establishment Registration',
       'MSME / FSSAI / RERA / Import-Export Code Registrations',
@@ -68,7 +67,7 @@ const services: ServiceItem[] = [
     slug: 'other-allied-services',
     icon: <Briefcase size={24} />,
     itemColor: 'bg-[#3B82B8]',
-    image: '/other-services.jpg',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988932/other-services_fksuus.jpg',
     items: [
       'Business Valuation',
       'Bank Funding / Project Financing',
@@ -119,7 +118,7 @@ const ServiceCard = memo(function ServiceCard({
         'relative overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] cursor-pointer',
         'transition-[flex,box-shadow] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]',
         'transform-gpu will-change-[flex]',
-        'shadow-[0_4px_30px_rgba(0,0,0,0.03)] border border-white/10',
+        'shadow-[0_4px_30px_rgba(0,0,0,0.03)] border border-brand-lightest/10',
         'flex flex-col',
         isAnyActive
           ? isActive
@@ -136,6 +135,7 @@ const ServiceCard = memo(function ServiceCard({
           src={service.image}
           alt={service.title}
           fill
+          unoptimized={true}
           sizes="(max-width: 1024px) 100vw, 25vw"
           className={[
             'object-cover transition-transform duration-700 ease-out transform-gpu',
@@ -160,10 +160,10 @@ const ServiceCard = memo(function ServiceCard({
         ].join(' ')}
       >
         {/* Removed backdrop-blur — creates expensive compositor layer per card */}
-        <div className="w-14 h-14 lg:w-16 lg:h-16 bg-white/20 rounded-2xl flex items-center justify-center text-white shadow-sm mb-6 shrink-0 border border-white/30">
+        <div className="w-14 h-14 lg:w-16 lg:h-16 bg-brand-lightest/20 rounded-2xl flex items-center justify-center text-brand-lightest shadow-sm mb-6 shrink-0 border border-brand-lightest/30">
           {service.icon}
         </div>
-        <h3 className="text-xl lg:text-2xl xl:text-3xl font-heading font-semibold text-white text-center leading-snug drop-shadow-md">
+        <h3 className="text-xl lg:text-2xl xl:text-3xl font-heading font-semibold text-brand-lightest text-center leading-snug drop-shadow-md">
           {service.title}
         </h3>
       </div>
@@ -176,16 +176,16 @@ const ServiceCard = memo(function ServiceCard({
           isAnyActive && !isActive ? 'opacity-100' : 'opacity-0 pointer-events-none',
         ].join(' ')}
       >
-        <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/20 border border-white/30 shadow-sm flex items-center justify-center text-white mb-6 shrink-0">
+        <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-brand-lightest/20 border border-brand-lightest/30 shadow-sm flex items-center justify-center text-brand-lightest mb-6 shrink-0">
           {service.icon}
         </div>
         <h3
-          className="text-lg lg:text-xl font-heading font-medium tracking-wide text-white whitespace-nowrap hidden lg:block drop-shadow-md"
+          className="text-lg lg:text-xl font-heading font-medium tracking-wide text-brand-lightest whitespace-nowrap hidden lg:block drop-shadow-md"
           style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
         >
           {service.title}
         </h3>
-        <h3 className="text-sm font-heading font-medium text-white text-center lg:hidden drop-shadow-md">
+        <h3 className="text-sm font-heading font-medium text-brand-lightest text-center lg:hidden drop-shadow-md">
           {service.title}
         </h3>
       </div>
@@ -206,31 +206,31 @@ const ServiceCard = memo(function ServiceCard({
       >
         {/* Left Block */}
         <div className="flex flex-col justify-start">
-          <div className="w-14 h-14 bg-white/20 border border-white/30 rounded-2xl flex items-center justify-center text-white shadow-sm mb-6 lg:mb-8">
+          <div className="w-14 h-14 bg-brand-lightest/20 border border-brand-lightest/30 rounded-2xl flex items-center justify-center text-brand-lightest shadow-sm mb-6 lg:mb-8">
             {service.icon}
           </div>
-          <h3 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-semibold text-white leading-tight mb-4 drop-shadow-md">
+          <h3 className="text-3xl lg:text-4xl xl:text-5xl font-heading font-semibold text-brand-lightest leading-tight mb-4 drop-shadow-md">
             {service.title}
           </h3>
           {service.description && (
-            <p className="text-white/80 text-base lg:text-lg mb-4 max-w-sm drop-shadow-sm">
+            <p className="text-brand-lightest/80 text-base lg:text-lg mb-4 max-w-sm drop-shadow-sm">
               {service.description}
             </p>
           )}
           <Link
             href={`/services/${service.slug}`}
-            className="mt-auto hidden xl:inline-flex items-center gap-2 text-sm font-medium bg-white text-brand-dark px-6 py-3 rounded-full hover:bg-white/90 transition-colors w-max shadow-md"
+            className="mt-auto hidden xl:inline-flex items-center gap-2 text-sm font-medium bg-brand-lightest text-brand-dark px-6 py-3 rounded-full hover:bg-brand-lightest/90 transition-colors w-max shadow-md"
           >
             Explore <ArrowRight size={16} />
           </Link>
         </div>
 
         {/* Right Block: List — no overflow-y-auto so all items are always visible */}
-        <div className="bg-black/30 border border-white/20 rounded-3xl p-6 lg:p-8 flex flex-col justify-center shadow-lg">
+        <div className="bg-black/30 border border-brand-lightest/20 rounded-3xl p-6 lg:p-8 flex flex-col justify-center shadow-lg">
           <ul className="space-y-4">
             {service.items.map((item, i) => (
-              <li key={i} className="flex items-start gap-4 text-white/90 text-[15px] lg:text-base font-medium leading-relaxed">
-                <span className={`w-2 h-2 rounded-full ${service.itemColor} mt-2 shrink-0 ring-2 ring-white/30`} />
+              <li key={i} className="flex items-start gap-4 text-brand-lightest/90 text-[15px] lg:text-base font-medium leading-relaxed">
+                <span className={`w-2 h-2 rounded-full ${service.itemColor} mt-2 shrink-0 ring-2 ring-brand-lightest/30`} />
                 <span>{item}</span>
               </li>
             ))}
@@ -239,7 +239,7 @@ const ServiceCard = memo(function ServiceCard({
 
         <Link
           href={`/services/${service.slug}`}
-          className="xl:hidden mt-2 inline-flex items-center justify-center gap-2 text-sm font-medium bg-white text-brand-dark px-6 py-3 rounded-full shadow-md hover:bg-white/90 transition-colors"
+          className="xl:hidden mt-2 inline-flex items-center justify-center gap-2 text-sm font-medium bg-brand-lightest text-brand-dark px-6 py-3 rounded-full shadow-md hover:bg-brand-lightest/90 transition-colors"
         >
           Explore <ArrowRight size={16} />
         </Link>
@@ -280,8 +280,15 @@ export default function Services() {
   }, [isMobile]);
 
   return (
-    <section id="services" className="pt-0 pb-24 lg:pb-32 bg-white text-brand-dark overflow-hidden">
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20 mt-8 lg:mt-16">
+    <section id="services" className="pt-0 pb-24 lg:pb-32 text-brand-dark overflow-hidden relative" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
+
+      {/* Minimal decorative blobs */}
+      <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
+        style={{ background: 'radial-gradient(circle, #3179AC 0%, transparent 70%)' }} />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
+        style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
+
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20 mt-8 lg:mt-16 relative z-10">
 
         {/* Header Block */}
         <motion.div
@@ -289,15 +296,21 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-10 lg:mb-16"
+          className="mb-14 lg:mb-24 text-center flex flex-col items-center justify-center w-full"
         >
-          <span className="text-sm font-bold tracking-widest uppercase text-brand-accent mb-4 block">
-            Our Services
-          </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-semibold leading-[1.1] text-brand-dark">
-            <span className="block">Explore our comprehensive</span>
-            <span className="block pl-4 sm:pl-6">financial solutions.</span>
-          </h2>
+          <div className="flex items-center gap-4 sm:gap-6 mb-6">
+            <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-medium text-brand-dark tracking-tight capitalize">
+              Our Services
+            </h2>
+            <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />
+          </div>
+
+          <div className="w-full max-w-full overflow-x-auto hide-scrollbar sm:overflow-visible flex justify-center">
+            <p className="text-[clamp(14px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide whitespace-nowrap px-4 py-1">
+              Explore our comprehensive financial solutions.
+            </p>
+          </div>
         </motion.div>
 
         {/* Accordion Container */}

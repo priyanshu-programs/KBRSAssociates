@@ -18,8 +18,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-    title: "KBRS & Associates",
-    description: "KBRS & Associates",
+    title: "K B R S & Associates",
+    description: "K B R S & Associates",
     icons: {
         icon: "/logo.jpg",
     },
@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-            <body className="min-h-screen bg-brand-light font-sans text-brand-dark selection:bg-brand-accent selection:text-white antialiased">
+            <body className="min-h-screen bg-brand-light font-sans text-brand-dark selection:bg-brand-accent selection:text-brand-lightest antialiased overflow-x-hidden">
                 <SmoothScrolling>
                     <Navbar />
                     {children}

@@ -3,14 +3,14 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import ScrollStack, { ScrollStackItem } from './ScrollStack/ScrollStack';
-import { Users, Handshake, Scale, Building, Heart, Home } from 'lucide-react';
+import { Users, Handshake, Scale, Building, Globe, Home } from 'lucide-react';
 
 const clients = [
   {
     id: '01',
-    title: 'Individuals',
+    title: 'Individuals & HUFs',
     description: 'Personalized wealth management, tax return filing, and strategic investment structuring for personal financial growth.',
-    icon: <Users size={28} strokeWidth={1.5} />,
+    icon: <Users size={56} strokeWidth={1.5} />,
     accent: '#3B82B8',
     image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200',
   },
@@ -18,7 +18,7 @@ const clients = [
     id: '02',
     title: 'Partnership Firms',
     description: 'Financial structuring, tax planning, and statutory compliance for joint ventures and collaborative business models.',
-    icon: <Handshake size={28} strokeWidth={1.5} />,
+    icon: <Handshake size={56} strokeWidth={1.5} />,
     accent: '#2A648F',
     image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200',
   },
@@ -26,7 +26,7 @@ const clients = [
     id: '03',
     title: 'LLP (Limited Liability Partnerships)',
     description: 'Governance, compliance, and strategic advisory tailored for limited liability structures and modern enterprises.',
-    icon: <Scale size={28} strokeWidth={1.5} />,
+    icon: <Scale size={56} strokeWidth={1.5} />,
     accent: '#1A4A6D',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1200',
   },
@@ -34,7 +34,7 @@ const clients = [
     id: '04',
     title: 'Corporates',
     description: 'Comprehensive compliance, audit, and strategic financial advisory for large-scale enterprise operations.',
-    icon: <Building size={28} strokeWidth={1.5} />,
+    icon: <Building size={56} strokeWidth={1.5} />,
     accent: '#3B82B8',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200',
   },
@@ -42,7 +42,7 @@ const clients = [
     id: '05',
     title: 'Trusts / NGOs',
     description: 'Governance, specialized auditing, and strict regulatory compliance for non-profit organizations and trusts.',
-    icon: <Heart size={28} strokeWidth={1.5} />,
+    icon: <Globe size={56} strokeWidth={1.5} />,
     accent: '#2A648F',
     image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1200',
   },
@@ -50,16 +50,23 @@ const clients = [
     id: '06',
     title: 'Residential Societies',
     description: 'Accounting, transparent auditing, and compliance management for housing societies and resident welfare.',
-    icon: <Home size={28} strokeWidth={1.5} />,
+    icon: <Home size={56} strokeWidth={1.5} />,
     accent: '#1A4A6D',
     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200',
   },
 ];
 
-export default function Clientele() {
+export default function CustomerType() {
   return (
-    <section id="clientele" className="py-24 lg:py-32 bg-brand-light">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="customer-type" className="py-24 lg:py-32 relative text-brand-dark" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
+
+      {/* Minimal decorative blobs */}
+      <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
+        style={{ background: 'radial-gradient(circle, #3179AC 0%, transparent 70%)' }} />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
+        style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <motion.div
@@ -67,14 +74,21 @@ export default function Clientele() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-12 lg:mb-20 text-center"
+          className="mb-14 lg:mb-24 text-center flex flex-col items-center justify-center w-full"
         >
-          <span className="text-sm font-bold tracking-widest uppercase text-brand-accent mb-6 block">
-            Clientele
-          </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-semibold leading-[1.1] text-brand-dark max-w-3xl mx-auto">
-            Partnering with diverse entities for financial excellence.
-          </h2>
+          <div className="flex items-center gap-4 sm:gap-6 mb-6">
+            <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-medium text-brand-dark tracking-tight capitalize">
+              Customer Types
+            </h2>
+            <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />
+          </div>
+
+          <div className="w-full max-w-full overflow-x-auto hide-scrollbar sm:overflow-visible flex justify-center">
+            <p className="text-[clamp(12px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide whitespace-nowrap px-4 py-1">
+              Partnering with diverse entities and providing comprehensive financial solutions.
+            </p>
+          </div>
         </motion.div>
 
         {/* ScrollStack Cards */}
@@ -107,28 +121,26 @@ export default function Clientele() {
                 />
 
                 <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-10 w-full">
-                  {/* Content (Left) */}
-                  <div className="flex-1 order-2 sm:order-1 flex flex-col justify-center">
-                    <div className="flex items-baseline gap-3 mb-3 lg:mb-5">
-                      <span className="text-3xl lg:text-5xl font-heading font-bold text-white/30">
-                        {client.id}
-                      </span>
-                      <h3 className="text-xl md:text-2xl lg:text-4xl font-heading font-semibold text-white leading-tight">
-                        {client.title}
-                      </h3>
-                    </div>
-                    <p className="text-white/85 text-[15px] sm:text-base lg:text-[19px] leading-relaxed max-w-2xl font-medium drop-shadow-sm">
-                      {client.description}
-                    </p>
+                  {/* Content (Centered) */}
+                  <div className="flex-1 flex flex-col items-center text-center justify-center w-full h-full gap-5 lg:gap-8">
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0, y: 20 }}
+                      whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                      viewport={{ once: true }}
+                      className="w-20 h-20 lg:w-28 lg:h-28 rounded-full flex items-center justify-center text-brand-lightest backdrop-blur-xl border-[1.5px] border-brand-lightest/30 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-110"
+                      style={{ background: `linear-gradient(135deg, ${client.accent}D9, ${client.accent}66)` }}
+                    >
+                      <div className="scale-75 lg:scale-100">
+                        {client.icon}
+                      </div>
+                    </motion.div>
+                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-lightest leading-tight drop-shadow-lg max-w-4xl mx-auto">
+                      {client.title}
+                    </h3>
                   </div>
 
-                  {/* Icon (Right) */}
-                  <div
-                    className="w-16 h-16 lg:w-32 lg:h-32 rounded-2xl lg:rounded-[1.75rem] flex items-center justify-center shrink-0 text-white shadow-lg order-1 sm:order-2 self-start sm:self-center"
-                    style={{ background: `linear-gradient(135deg, ${client.accent}, ${client.accent}cc)` }}
-                  >
-                    {React.cloneElement(client.icon as any, { strokeWidth: 1.5, className: "w-8 h-8 lg:w-16 lg:h-16 max-w-full max-h-full" })}
-                  </div>
+
                 </div>
               </div>
             </ScrollStackItem>
