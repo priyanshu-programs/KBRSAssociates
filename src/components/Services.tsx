@@ -21,7 +21,7 @@ const services: ServiceItem[] = [
     slug: 'accounts-audit-income-tax',
     icon: <FileText size={24} />,
     itemColor: 'bg-brand-accent',
-    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988897/accounts-audit-income-tax_pb9fh7.png',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772988897/accounts-audit-income-tax_pb9fh7.png',
     items: [
       'Preparation & Finalisation of Accounts',
       'Income Tax Return Filing & Tax Planning',
@@ -38,7 +38,7 @@ const services: ServiceItem[] = [
     slug: 'gst-corporate-laws',
     icon: <Building2 size={24} />,
     itemColor: 'bg-brand-dark',
-    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988896/gst-corporate-laws_ljbr92.jpg',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772988896/gst-corporate-laws_ljbr92.jpg',
     items: [
       'GST Registration, Returns, and Litigation',
       'Company Formation & Striking Off',
@@ -54,7 +54,7 @@ const services: ServiceItem[] = [
     slug: 'registration-services',
     icon: <ShieldCheck size={24} />,
     itemColor: 'bg-[#2A648F]',
-    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988931/registration-services_mlpft3.jpg',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772988931/registration-services_mlpft3.jpg',
     items: [
       'Trade License / Shop & Establishment Registration',
       'MSME / FSSAI / RERA / Import-Export Code Registrations',
@@ -67,7 +67,7 @@ const services: ServiceItem[] = [
     slug: 'other-allied-services',
     icon: <Briefcase size={24} />,
     itemColor: 'bg-[#3B82B8]',
-    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988932/other-services_fksuus.jpg',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772988932/other-services_fksuus.jpg',
     items: [
       'Business Valuation',
       'Bank Funding / Project Financing',
@@ -135,7 +135,6 @@ const ServiceCard = memo(function ServiceCard({
           src={service.image}
           alt={service.title}
           fill
-          unoptimized={true}
           sizes="(max-width: 1024px) 100vw, 25vw"
           className={[
             'object-cover transition-transform duration-700 ease-out transform-gpu',
@@ -307,7 +306,7 @@ export default function Services() {
           </div>
 
           <div className="w-full max-w-full overflow-x-auto hide-scrollbar sm:overflow-visible flex justify-center">
-            <p className="text-[clamp(14px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide whitespace-nowrap px-4 py-1">
+            <p className="text-[clamp(14px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide whitespace-normal sm:whitespace-nowrap px-4 py-1">
               Explore our comprehensive financial solutions.
             </p>
           </div>

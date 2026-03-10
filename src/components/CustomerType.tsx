@@ -85,7 +85,7 @@ export default function CustomerType() {
           </div>
 
           <div className="w-full max-w-full overflow-x-auto hide-scrollbar sm:overflow-visible flex justify-center">
-            <p className="text-[clamp(12px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide whitespace-nowrap px-4 py-1">
+            <p className="text-[clamp(12px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide whitespace-normal sm:whitespace-nowrap px-4 py-1">
               Partnering with diverse entities and providing comprehensive financial solutions.
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function CustomerType() {
                 />
 
                 {/* Dark Gradient Overlay for high contrast */}
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-gray-900/30 mix-blend-multiply pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-900/85 via-gray-900/65 to-gray-900/40 pointer-events-none" />
                 <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
                 {/* Accent line */}
@@ -128,7 +128,7 @@ export default function CustomerType() {
                       whileInView={{ scale: 1, opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                       viewport={{ once: true }}
-                      className="w-20 h-20 lg:w-28 lg:h-28 rounded-full flex items-center justify-center text-brand-lightest backdrop-blur-xl border-[1.5px] border-brand-lightest/30 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-110"
+                      className="w-20 h-20 lg:w-28 lg:h-28 rounded-full flex items-center justify-center text-brand-lightest border-[1.5px] border-brand-lightest/30 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-110"
                       style={{ background: `linear-gradient(135deg, ${client.accent}D9, ${client.accent}66)` }}
                     >
                       <div className="scale-75 lg:scale-100">

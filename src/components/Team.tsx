@@ -31,7 +31,7 @@ const team: TeamMember[] = [
       <>Her leadership in <span className="font-bold">Indirect Taxation</span> earned her the role of <span className="font-medium">Special Invitee to the GST & Indirect Taxes Committee</span>. She is also a <span className="font-bold">Certified Information System Auditor (DISA)</span> and <span className="font-bold">Certified Social Auditor</span>, with strong credentials in Bank Audits and Governance.</>,
       <>A passionate advocate for financial literacy and women\'s empowerment, she regularly conducts educational workshops and delivers lectures at professional forums. She currently serves as an <span className="font-bold">Independent Woman Director on listed companies</span>, offering strategic insight into governance, risk management, and financial oversight.</>,
     ],
-    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1773132667/K_vbu5ur.jpg',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1773132667/K_vbu5ur.jpg',
     socials: {
       linkedin: '#',
       email: 'mailto:komal@example.com',
@@ -48,7 +48,7 @@ const team: TeamMember[] = [
       <>A strategic thinker with a practical, results-oriented approach, she brings deep insight into <span className="font-bold">Accounts, Taxation, Regulatory Compliance, SOP design and Implementation</span>. She has successfully led cross-functional transformation projects, driving significant process efficiencies and cost savings.</>,
       <>Her certifications in <span className="font-bold">Valuation (ICAI), SME Finance (IIBF), and Investment Advisory (CISI, UK)</span> complement her strong foundation in financial management and corporate governance. A technology and AI enthusiast, she champions automation-led efficiency and innovation in finance.</>,
     ],
-    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1773132647/R_nbuc3v.jpg',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1773132647/R_nbuc3v.jpg',
     socials: {
       linkedin: '#',
       email: 'mailto:richa@example.com',
@@ -59,18 +59,26 @@ const team: TeamMember[] = [
 
 type Member = (typeof team)[number];
 
-// ─── Glass cursor ─────────────────────────────────────────────────────────────
+// ─── Glass cursor (desktop only — skipped on touch devices) ──────────────────
 function GlassCursor({ visible }: { visible: boolean }) {
+  const [isTouch, setIsTouch] = useState(false);
   const rawX = useMotionValue(-300);
   const rawY = useMotionValue(-300);
   const x = useSpring(rawX, { damping: 26, stiffness: 280, mass: 0.6 });
   const y = useSpring(rawY, { damping: 26, stiffness: 280, mass: 0.6 });
 
   useEffect(() => {
+    setIsTouch(window.matchMedia('(pointer: coarse)').matches);
+  }, []);
+
+  useEffect(() => {
+    if (isTouch) return;
     const move = (e: MouseEvent) => { rawX.set(e.clientX); rawY.set(e.clientY); };
     window.addEventListener('mousemove', move);
     return () => window.removeEventListener('mousemove', move);
-  }, [rawX, rawY]);
+  }, [rawX, rawY, isTouch]);
+
+  if (isTouch) return null;
 
   return (
     <motion.div
@@ -82,9 +90,7 @@ function GlassCursor({ visible }: { visible: boolean }) {
       <div style={{
         width: 96, height: 96, marginLeft: -48, marginTop: -48,
         borderRadius: '50%',
-        background: 'rgba(22,65,97,0.38)',
-        backdropFilter: 'blur(14px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(14px) saturate(180%)',
+        background: 'rgba(22,65,97,0.55)',
         border: '1.5px solid rgba(226,236,247,0.28)',
         boxShadow: '0 8px 32px rgba(22,65,97,0.3), inset 0 1px 0 rgba(226,236,247,0.18)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -243,9 +249,8 @@ function ProfileCard({
 
         {/* Card body — plain div, no layoutId (only photo uses layoutId) */}
         <div
-          className="relative rounded-[2rem] flex flex-col items-center pb-16"
+          className="relative rounded-[2rem] flex flex-col items-center pb-16 w-[270px] sm:w-[310px]"
           style={{
-            width: 310,
             paddingTop: PHOTO_H - OVERFLOW + 48,
             background: 'linear-gradient(160deg, #1a5278 0%, #0f3454 100%)',
             border: '1px solid rgba(226,236,247,0.16)',
@@ -342,7 +347,7 @@ export default function Team() {
             </div>
 
             <div className="w-full max-w-full overflow-x-auto hide-scrollbar sm:overflow-visible flex justify-center">
-              <p className="text-[clamp(14px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide whitespace-nowrap px-4 py-1">
+              <p className="text-[clamp(14px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide whitespace-normal sm:whitespace-nowrap px-4 py-1">
                 Led by dynamic finance professionals with a shared vision.
               </p>
             </div>

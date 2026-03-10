@@ -19,6 +19,8 @@
   --color-brand-light: #F5F8FA;
   --color-brand-lightest: #E2ECF7;
   /* Alias so bg-brand-light continues to work everywhere */
+
+  --animate-ticker-scroll: ticker-scroll 80s linear infinite;
 }
 
 body {
@@ -160,6 +162,13 @@ h6 {
     scroll-behavior: auto !important;
   }
 }
+
+/* Footer watermark ticker — pure CSS, no JS overhead */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 
 @keyframes btn-shine {
   0% {

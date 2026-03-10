@@ -160,8 +160,6 @@ const Word = ({
 }) => {
   const opacity = useTransform(progress, range, [0.07, 1]);
   const y = useTransform(progress, range, ["0.4em", "0em"]);
-  // Only highlight words get scale — reduces the number of active transforms
-  const scale = isHighlight ? useTransform(progress, range, [0.97, 1]) : undefined;
   const baseColor = isHighlight ? "text-brand-accent" : "text-brand-dark";
 
   return (
@@ -172,11 +170,9 @@ const Word = ({
         style={{
           opacity,
           y,
-          scale,
           position: "absolute",
           left: 0,
           top: 0,
-          willChange: "opacity, transform",
         }}
         className={baseColor}
       >
