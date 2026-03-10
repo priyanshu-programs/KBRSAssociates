@@ -11,8 +11,8 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
     }
   }
 };
@@ -24,7 +24,7 @@ const textRevealVariants: Variants = {
     opacity: 1,
     rotateZ: 0,
     transition: {
-      duration: 1.2,
+      duration: 0.8,
       ease: [0.16, 1, 0.3, 1]
     }
   }
@@ -39,9 +39,9 @@ const cardRevealVariants: Variants = {
     y: 0,
     scale: 1,
     transition: {
-      duration: 1.4,
+      duration: 0.8,
       ease: [0.16, 1, 0.3, 1],
-      delay: 0.4
+      delay: 0
     }
   }
 };
@@ -52,9 +52,9 @@ const fadeUpVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 1,
+      duration: 0.8,
       ease: "easeOut",
-      delay: 0.8
+      delay: 0.4
     }
   }
 };
@@ -149,7 +149,7 @@ export default function Hero() {
 
           {/* Main Headline */}
           <div className="max-w-4xl">
-            <h1 className="text-[1.75rem] xs:text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-medium leading-[1.05] tracking-tight text-brand-lightest flex flex-col">
+            <h1 className="text-[1.75rem] xs:text-[2.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-medium leading-[1.05] tracking-tight text-brand-light flex flex-col">
               <span className="overflow-hidden pb-2 block">
                 <motion.span variants={textRevealVariants} className="block">Excellence in Service,</motion.span>
               </span>
@@ -219,12 +219,12 @@ export default function Hero() {
                 className="group relative inline-flex items-center justify-center cursor-pointer"
               >
                 {/* Secondary Container (Arrow) - Smaller circle sliding right */}
-                <span className="absolute right-0 top-0 bottom-0 my-auto h-[3.25rem] w-[3.25rem] rounded-lg bg-brand-lightest flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-x-[4rem] z-0">
+                <span className="absolute right-0 top-0 bottom-0 my-auto h-[3.25rem] w-[3.25rem] rounded-lg bg-brand-light flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-x-[4rem] z-0">
                   <ArrowRight size={20} className="text-brand-dark" strokeWidth={2} />
                 </span>
 
                 {/* Primary Container (Text) - Stays on top */}
-                <span className="relative z-10 rounded-lg bg-brand-lightest px-8 py-4 flex items-center justify-center text-brand-dark font-medium text-sm shadow-[0_4px_20px_rgba(0,0,0,0.05)] whitespace-nowrap">
+                <span className="relative z-10 rounded-lg bg-brand-light px-8 py-4 flex items-center justify-center text-brand-dark font-medium text-sm shadow-[0_4px_20px_rgba(0,0,0,0.05)] whitespace-nowrap">
                   Contact us
                 </span>
               </a>

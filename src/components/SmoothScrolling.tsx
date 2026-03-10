@@ -1,8 +1,14 @@
 "use client";
 
-import { ReactLenis, useLenis } from "lenis/react";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
+import { useLenis } from "lenis/react";
+
+const ReactLenis = dynamic(
+    () => import("lenis/react").then((mod) => mod.ReactLenis),
+    { ssr: false }
+);
 
 /**
  * Inner component that has access to the Lenis context.

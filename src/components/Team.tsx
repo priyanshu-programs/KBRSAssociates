@@ -249,7 +249,7 @@ function ProfileCard({
 
         {/* Card body — plain div, no layoutId (only photo uses layoutId) */}
         <div
-          className="relative overflow-hidden rounded-[2rem] flex flex-col items-center pb-16 w-full max-w-[310px]"
+          className="relative overflow-hidden rounded-[2rem] flex flex-col items-center pb-16 w-[310px]"
           style={{
             paddingTop: PHOTO_H - OVERFLOW + 48,
             background: 'linear-gradient(160deg, #1a5278 0%, #0f3454 100%)',

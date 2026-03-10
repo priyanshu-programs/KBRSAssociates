@@ -32,6 +32,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+            <head>
+                <link rel="preconnect" href="https://res.cloudinary.com" />
+                <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+            </head>
             <body className="min-h-screen bg-brand-light font-sans text-brand-dark selection:bg-brand-accent selection:text-brand-lightest antialiased overflow-x-hidden">
                 <SmoothScrolling>
                     <Navbar />
