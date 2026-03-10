@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import ReactCountUp from 'react-countup';
+import { useLenis } from 'lenis/react';
 
 const stats = [
     {
@@ -66,8 +67,23 @@ const fadeUpItem = {
 };
 
 export default function Experience() {
+    const lenis = useLenis();
+
+    const handleScrollToTeam = (e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault();
+        const target = document.querySelector('#team') as HTMLElement;
+        if (target) {
+            const top = target.getBoundingClientRect().top + window.scrollY - 96;
+            if (lenis) {
+                lenis.scrollTo(target, { offset: -96, duration: 1.5 });
+            } else {
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        }
+    };
+
     return (
-        <section id="experience" className="w-full bg-[#FAFAFB] pt-20 lg:pt-32 xl:pt-40 pb-0 relative overflow-hidden">
+        <section id="experience" className="w-full bg-section-a pt-20 lg:pt-32 xl:pt-40 pb-0 relative overflow-hidden">
 
             {/* Container holding the Left-Anchored Panel, Right Content, and the Bottom Image */}
             <motion.div
@@ -99,13 +115,13 @@ export default function Experience() {
                                 <div key={i} className="flex flex-col items-center sm:items-start text-center sm:text-left flex-1">
 
                                     {/* 1. Label moved to the top as a heading */}
-                                    <h3 className="text-white/75 text-[15px] sm:text-[17px] font-medium tracking-wide mb-6">
+                                    <h3 className="text-brand-lightest/75 text-[15px] sm:text-[17px] font-medium tracking-wide mb-6">
                                         {stat.label}
                                     </h3>
 
                                     {/* 2. Value dynamically counts up with subtle gradient */}
                                     <span
-                                        className="font-heading font-extralight bg-clip-text text-transparent bg-gradient-to-br from-white via-white/90 to-white/50 leading-tight pb-2 mb-2 inline-block relative -ml-1"
+                                        className="font-heading font-extralight bg-clip-text text-transparent bg-gradient-to-br from-brand-lightest via-brand-lightest/90 to-brand-lightest/50 leading-tight pb-2 mb-2 inline-block relative -ml-1"
                                         style={{ fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
                                     >
                                         <AnimatedStat text={stat.value} />
@@ -151,6 +167,7 @@ export default function Experience() {
                                 {/* Magnetic Expanding Avatars */}
                                 <motion.div variants={fadeUpItem}>
                                     <motion.div
+                                        onClick={handleScrollToTeam}
                                         className="flex -space-x-4 cursor-pointer py-2 sm:pl-2"
                                         initial="rest"
                                         whileHover="hover"
@@ -161,9 +178,8 @@ export default function Experience() {
                                         }}
                                     >
                                         {[
-                                            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=120&auto=format&fit=crop&crop=faces",
-                                            "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=120&auto=format&fit=crop&crop=faces",
-                                            "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=120&auto=format&fit=crop&crop=faces",
+                                            "https://res.cloudinary.com/ddooeqf5m/image/upload/v1773132667/K_vbu5ur.jpg",
+                                            "https://res.cloudinary.com/ddooeqf5m/image/upload/v1773132647/R_nbuc3v.jpg",
                                         ].map((src, i) => (
                                             <motion.div
                                                 key={i}
@@ -179,7 +195,8 @@ export default function Experience() {
                                                     src={src}
                                                     alt=""
                                                     fill
-                                                    sizes="64px"
+                                                    sizes="128px"
+                                                    quality={100}
                                                     className="object-cover"
                                                 />
                                             </motion.div>
@@ -212,11 +229,11 @@ export default function Experience() {
                                         >
                                             {/* Secondary Container (Arrow) - Smaller circle sliding right */}
                                             <span className="absolute right-0 top-0 bottom-0 my-auto h-[3.25rem] w-[3.25rem] rounded-lg bg-brand-dark flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-x-[3.75rem] z-0">
-                                                <ArrowRight size={20} className="text-white" strokeWidth={2} />
+                                                <ArrowRight size={20} className="text-brand-lightest" strokeWidth={2} />
                                             </span>
 
                                             {/* Primary Container (Text) - Stays on top */}
-                                            <span className="relative z-10 rounded-lg bg-brand-dark px-8 py-4 flex items-center justify-center text-white font-medium text-sm shadow-[0_4px_20px_rgba(0,0,0,0.05)] whitespace-nowrap border border-white/10">
+                                            <span className="relative z-10 rounded-lg bg-brand-dark px-8 py-4 flex items-center justify-center text-brand-lightest font-medium text-sm shadow-[0_4px_20px_rgba(0,0,0,0.05)] whitespace-nowrap border border-brand-lightest/10">
                                                 About us
                                             </span>
                                         </Link>
@@ -240,14 +257,14 @@ export default function Experience() {
                     <div className="w-full max-w-[1920px] mx-auto px-6 sm:px-12 xl:px-0">
                         <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
                             <Image
-                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                                src="https://res.cloudinary.com/ddooeqf5m/image/upload/v1772987422/pexels-masoodaslami-6546380_tvfomw.jpg"
                                 alt="Corporate Building Setup"
                                 fill
                                 sizes="100vw"
                                 className="object-cover"
                             />
-                            {/* Blueish tint overlay */}
-                            <div className="absolute inset-0 bg-[#005A8D]/40 mix-blend-multiply pointer-events-none" />
+                            {/* Brand-colored tint overlay */}
+                            <div className="absolute inset-0 bg-brand-dark/50 mix-blend-multiply pointer-events-none" />
                         </div>
                     </div>
                 </motion.div>

@@ -23,7 +23,7 @@ export const serviceDetails: ServiceDetail[] = [
         iconName: 'FileText',
         itemColor: 'bg-brand-accent',
         accentHex: '#3179AC',
-        image: '/accounts-audit-income-tax.png',
+        image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988897/accounts-audit-income-tax_pb9fh7.png',
         subServices: [
             {
                 title: 'Preparation & Finalisation of Accounts',
@@ -74,7 +74,7 @@ export const serviceDetails: ServiceDetail[] = [
         iconName: 'Building2',
         itemColor: 'bg-brand-dark',
         accentHex: '#164161',
-        image: '/gst-corporate-laws.jpg',
+        image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988896/gst-corporate-laws_ljbr92.jpg',
         subServices: [
             {
                 title: 'GST Registration, Returns, and Litigation Handling',
@@ -120,7 +120,7 @@ export const serviceDetails: ServiceDetail[] = [
         iconName: 'ShieldCheck',
         itemColor: 'bg-[#2A648F]',
         accentHex: '#2A648F',
-        image: '/registration-services.jpg',
+        image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988931/registration-services_mlpft3.jpg',
         subServices: [
             {
                 title: 'Trade License / Shop & Establishment Registration',
@@ -151,7 +151,7 @@ export const serviceDetails: ServiceDetail[] = [
         iconName: 'Briefcase',
         itemColor: 'bg-[#3B82B8]',
         accentHex: '#3B82B8',
-        image: '/other-services.jpg',
+        image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988932/other-services_fksuus.jpg',
         subServices: [
             {
                 title: 'Business Valuation',

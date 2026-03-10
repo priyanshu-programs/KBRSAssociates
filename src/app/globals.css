@@ -4,16 +4,25 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-heading: "Playfair Display", ui-serif, Georgia, serif;
 
-  --color-brand-dark: #164161;
-  /* Deep Ocean Blue (from the gradient bottom) */
-  --color-brand-accent: #3179AC;
-  /* Muted Teal Blue (from the gradient middle) */
-  --color-brand-light: #F4F6F9;
+  --color-brand-dark: #2C507A;
+  --color-brand-accent: #4878A6;
   --color-brand-gray: #8A92A6;
+
+  /* ── Section colour system ─────────────────────────────────────
+     section-a  Icy pearl blue — light background (Hero areas, Experience, Services, Team)
+     section-b  Powder steel blue — contrast background (Vision, CustomerType)
+     Deep blues (#2C507A and darker) stay reserved for stat cards, footer, buttons.
+  ──────────────────────────────────────────────────────────────── */
+  --color-section-a: #F5F8FA;
+  /* Highly desaturated from previous blue */
+  --color-section-b: #A3C5EA;
+  --color-brand-light: #F5F8FA;
+  --color-brand-lightest: #E2ECF7;
+  /* Alias so bg-brand-light continues to work everywhere */
 }
 
 body {
-  @apply font-sans text-brand-dark bg-brand-light antialiased;
+  @apply font-sans text-brand-dark bg-brand-light antialiased overflow-x-hidden;
 }
 
 h1,
@@ -135,7 +144,7 @@ h6 {
 /* Glassmorphism */
 .glass-panel {
   backdrop-filter: blur(12px) saturate(180%);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(226, 236, 247, 0.85);
   border-bottom: 1px solid rgba(0, 11, 77, 0.05);
 }
 
@@ -193,7 +202,7 @@ html.lenis body {
    ========================================= */
 .modal-scroll {
   scrollbar-width: thin;
-  scrollbar-color: #3179AC rgba(255, 255, 255, 0.08);
+  scrollbar-color: #4878A6 rgba(226, 236, 247, 0.08);
 }
 
 .modal-scroll::-webkit-scrollbar {
@@ -201,12 +210,12 @@ html.lenis body {
 }
 
 .modal-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(226, 236, 247, 0.06);
   border-radius: 99px;
 }
 
 .modal-scroll::-webkit-scrollbar-thumb {
-  background: #3179AC;
+  background: #4878A6;
   border-radius: 99px;
 }
 

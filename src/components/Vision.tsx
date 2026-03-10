@@ -32,7 +32,15 @@ const words = [
 ];
 
 export default function Vision() {
+  const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
+
+  const { scrollYProgress: sectionScrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const tickerX = useTransform(sectionScrollYProgress, [0, 1], ["0%", "-50%"]);
 
   const { scrollYProgress } = useScroll({
     target: textRef,
@@ -48,21 +56,41 @@ export default function Vision() {
   });
 
   return (
-    <section className="py-32 lg:py-48 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-5xl mx-auto">
+    <section ref={sectionRef} className="pt-16 pb-32 lg:pt-24 lg:pb-48 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6"
-          >
-            <span className="text-xs font-bold tracking-[0.3em] uppercase text-brand-accent block mb-4">
-              Our Vision
-            </span>
-          </motion.div>
+      {/* Minimal decorative blobs */}
+      <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
+        style={{ background: 'radial-gradient(circle, #3179AC 0%, transparent 70%)' }} />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
+        style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
+
+      {/* Huge Sliding Ticker for "OUR VISION" */}
+      <div className="w-full flex mb-20 md:mb-28 lg:mb-40 relative z-10">
+        <motion.div
+          className="flex whitespace-nowrap w-max"
+          style={{ x: tickerX }}
+        >
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-8 md:gap-12 pr-8 md:pr-12">
+              <h2 className="text-[3.5rem] md:text-[6rem] lg:text-[9vw] font-heading font-medium text-brand-accent/30 tracking-tighter capitalize leading-none">
+                Our Vision
+              </h2>
+              <span className="text-[2rem] md:text-[3.5rem] lg:text-[4vw] text-brand-accent/50 mb-2 md:mb-4">
+                ✦
+              </span>
+              <h2 className="text-[3.5rem] md:text-[6rem] lg:text-[9vw] font-heading font-medium text-brand-dark tracking-tighter capitalize leading-none">
+                Our Vision
+              </h2>
+              <span className="text-[2rem] md:text-[3.5rem] lg:text-[4vw] text-brand-accent/50 mb-2 md:mb-4">
+                ✦
+              </span>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-5xl mx-auto">
 
           {/* Decorative line that grows in */}
           <motion.div
@@ -74,7 +102,7 @@ export default function Vision() {
           />
 
           {/* Scroll-driven word-by-word text reveal */}
-          <h2
+          <p
             ref={textRef}
             className="flex flex-wrap justify-center gap-x-[0.25em] gap-y-3 text-3xl sm:text-4xl lg:text-6xl font-heading font-medium leading-[1.35]"
           >
@@ -111,7 +139,7 @@ export default function Vision() {
                 </Word>
               );
             })}
-          </h2>
+          </p>
         </div>
       </div>
     </section>

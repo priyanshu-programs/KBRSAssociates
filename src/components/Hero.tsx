@@ -1,7 +1,8 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, Variants } from 'motion/react';
+import { motion, Variants, AnimatePresence } from 'motion/react';
 import { ArrowRight, Mouse } from 'lucide-react';
 import { useLenis } from 'lenis/react';
 
@@ -58,8 +59,23 @@ const fadeUpVariants: Variants = {
   }
 };
 
+const HERO_IMAGES = [
+  "https://res.cloudinary.com/ddooeqf5m/image/upload/v1772978771/hero-image_dnii3j.jpg",
+  "https://res.cloudinary.com/ddooeqf5m/image/upload/v1772980231/Whisk_6abfee4d6332e1fbe244f36d34b11ebbeg_mjgnru.png",
+  "https://res.cloudinary.com/ddooeqf5m/image/upload/v1772982571/Whisk_d20a9c4e48d3df5b220400a748d7ec78dr_aoemle.png",
+  "https://res.cloudinary.com/ddooeqf5m/image/upload/v1772983047/Whisk_f47bf8a8ad77fa48c164673cabd98f34dr_ufulms.jpg"
+];
+
 export default function Hero() {
   const lenis = useLenis();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleScrollToFooter = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -86,25 +102,46 @@ export default function Hero() {
         className="relative w-full h-[80vh] min-h-[39rem] max-h-[51.5rem]"
       >
 
-        {/* Background Image & Overlay */}
-        <div className="absolute inset-0 z-0 overflow-hidden rounded-[1rem] bg-brand-light">
-          {/* Wrap in motion.div so we can still animate scale without blur penalty */}
-          <motion.div
-            initial={{ scale: 1 }}
-            animate={{ scale: 1.05 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="absolute inset-0"
-          >
-            <Image
-              src="/hero-image.jpg"
-              alt="Hero Background"
-              fill
-              priority
-              sizes="(max-width: 1920px) 100vw, 1920px"
-              className="object-cover object-center md:object-top"
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-black/50 mix-blend-multiply"></div>
+        {/* Background */}
+        <div className="absolute inset-0 z-0 overflow-hidden rounded-[1rem] bg-section-a">
+          {HERO_IMAGES.map((src, index) => {
+            const isActive = currentImageIndex === index;
+            return (
+              <motion.div
+                key={src}
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: isActive ? 1 : 0,
+                }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute inset-0"
+                style={{ zIndex: isActive ? 1 : 0 }}
+              >
+                <motion.div
+                  className="absolute inset-0 w-full h-full"
+                  initial={{ scale: 1 }}
+                  animate={{
+                    scale: isActive ? 1.15 : 1
+                  }}
+                  transition={{
+                    scale: isActive
+                      ? { duration: 25, ease: "easeOut" }
+                      : { duration: 0, delay: 1.5 } // Keep scale frozen for 1.5s during fade-out, then reset
+                  }}
+                >
+                  <Image
+                    src={src}
+                    alt={`Hero Background ${index + 1}`}
+                    fill
+                    priority={true} // Preload all images to prevent blank screens
+                    sizes="(max-width: 1920px) 100vw, 1920px"
+                    className="object-cover object-center md:object-top origin-center"
+                  />
+                </motion.div>
+              </motion.div>
+            );
+          })}
+          <div className="absolute inset-0 bg-black/50 mix-blend-multiply z-10 transition-colors duration-1000 pointer-events-none"></div>
         </div>
 
         {/* Content Wrapper */}
@@ -112,7 +149,7 @@ export default function Hero() {
 
           {/* Main Headline */}
           <div className="max-w-4xl">
-            <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-medium leading-[1.05] tracking-tight text-white flex flex-col">
+            <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading font-medium leading-[1.05] tracking-tight text-brand-lightest flex flex-col">
               <span className="overflow-hidden pb-2 block">
                 <motion.span variants={textRevealVariants} className="block">Excellence in Service,</motion.span>
               </span>
@@ -126,7 +163,7 @@ export default function Hero() {
           </div>
 
           {/* Bottom Left: Scroll Down */}
-          <motion.div variants={fadeUpVariants} className="hidden sm:flex items-center gap-2 text-white/80 pb-2">
+          <motion.div variants={fadeUpVariants} className="hidden sm:flex items-center gap-2 text-brand-lightest/80 pb-2">
             <Mouse size={20} strokeWidth={1.5} className="animate-bounce" />
             <span className="text-sm font-medium">Scroll down</span>
           </motion.div>
@@ -136,26 +173,26 @@ export default function Hero() {
         {/* Bottom Right Cutout Area */}
         <motion.div
           variants={cardRevealVariants}
-          className="absolute bottom-0 right-[-1.1875rem] max-[30rem]:left-8 z-20 bg-brand-light pt-1.5 pl-1.5 sm:pt-4 sm:pl-4 rounded-tl-[1rem]"
+          className="absolute bottom-0 right-[-1.1875rem] max-[30rem]:left-8 z-20 bg-section-a pt-1.5 pl-1.5 sm:pt-4 sm:pl-4 rounded-tl-[1rem]"
         >
 
           {/* Top Inverted Corner */}
           <div className="absolute -top-1.5 sm:-top-4 right-[1.1875rem] w-1.5 sm:w-4 h-1.5 sm:h-4 pointer-events-none">
-            <svg viewBox="0 0 100 100" className="w-full h-full fill-brand-light" preserveAspectRatio="none">
+            <svg viewBox="0 0 100 100" className="w-full h-full fill-section-a" preserveAspectRatio="none">
               <path d="M0,100 C55.228475,100 100,55.228475 100,0 L100,100 L0,100 Z" />
             </svg>
           </div>
 
           {/* Left Inverted Corner */}
           <div className="absolute bottom-0 -left-1.5 sm:-left-4 w-1.5 sm:w-4 h-1.5 sm:h-4 pointer-events-none">
-            <svg viewBox="0 0 100 100" className="w-full h-full fill-brand-light" preserveAspectRatio="none">
+            <svg viewBox="0 0 100 100" className="w-full h-full fill-section-a" preserveAspectRatio="none">
               <path d="M100,0 C100,55.228475 55.228475,100 0,100 L100,100 L100,0 Z" />
             </svg>
           </div>
 
           {/* Blue Content Card */}
           <div className="rounded-tl-[1rem] rounded-bl-[1rem] p-8 md:p-10 w-full max-w-[450px] lg:max-w-[550px] shadow-lg" style={{ background: 'linear-gradient(0deg, #1A4A6D 0%, #2A648F 50%, #3B82B8 100%)' }}>
-            <p className="text-white/90 text-[15px] md:text-base leading-relaxed mb-8 font-light">
+            <p className="text-brand-lightest/90 text-[15px] md:text-base leading-relaxed mb-8 font-light">
               We transform client expectations into sustainable reality through a blend of subject matter expertise and exceptional service.
             </p>
 
@@ -182,12 +219,12 @@ export default function Hero() {
                 className="group relative inline-flex items-center justify-center cursor-pointer"
               >
                 {/* Secondary Container (Arrow) - Smaller circle sliding right */}
-                <span className="absolute right-0 top-0 bottom-0 my-auto h-[3.25rem] w-[3.25rem] rounded-lg bg-white flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-x-[4rem] z-0">
+                <span className="absolute right-0 top-0 bottom-0 my-auto h-[3.25rem] w-[3.25rem] rounded-lg bg-brand-lightest flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-x-[4rem] z-0">
                   <ArrowRight size={20} className="text-brand-dark" strokeWidth={2} />
                 </span>
 
                 {/* Primary Container (Text) - Stays on top */}
-                <span className="relative z-10 rounded-lg bg-white px-8 py-4 flex items-center justify-center text-brand-dark font-medium text-sm shadow-[0_4px_20px_rgba(0,0,0,0.05)] whitespace-nowrap">
+                <span className="relative z-10 rounded-lg bg-brand-lightest px-8 py-4 flex items-center justify-center text-brand-dark font-medium text-sm shadow-[0_4px_20px_rgba(0,0,0,0.05)] whitespace-nowrap">
                   Contact us
                 </span>
               </a>

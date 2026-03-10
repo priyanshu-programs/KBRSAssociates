@@ -24,13 +24,14 @@ const team: TeamMember[] = [
     id: 'komal',
     name: 'CA Komal Bhotika',
     role: 'Partner',
-    description: 'Chartered Accountant | GST & Taxation Expert | Independent Director',
+    description: 'Chartered Accountant | GST & Taxation Expert | Independent Director | Company Secretary',
     bio: [
-      <>Komal is an accomplished Chartered Accountant and Company Secretary with a robust background in <span className="font-bold">Auditing, Taxation, GST Litigation, and Financial Compliance</span>. She brings over a decade of experience in advising clients on complex statutory and regulatory matters.</>,
-      <>Her leadership in <span className="font-bold">Indirect Taxation</span> earned her the role of <span className="font-medium">Special Invitee to the GST & Indirect Taxes Committee of ICAI (2024)</span>. She is also a <span className="font-bold">Certified Information System Auditor (DISA)</span> and <span className="font-bold">Certified Social Auditor</span>, with strong credentials in Bank Audits and Governance.</>,
-      <>A passionate advocate for financial literacy and women\'s empowerment, she regularly conducts educational workshops and delivers lectures at ICAI and professional forums. She currently serves as an <span className="font-bold">Independent Woman Director on listed companies</span>, offering strategic insight into governance, risk management, and financial oversight.</>,
+      <>Komal is an accomplished Chartered Accountant and Company Secretary with a robust background in <span className="font-bold">Auditing, Taxation, GST Litigation, and Financial Compliance</span>.</>,
+      <>She brings over a decade of experience in advising clients on complex statutory and regulatory matters.</>,
+      <>Her leadership in <span className="font-bold">Indirect Taxation</span> earned her the role of <span className="font-medium">Special Invitee to the GST & Indirect Taxes Committee</span>. She is also a <span className="font-bold">Certified Information System Auditor (DISA)</span> and <span className="font-bold">Certified Social Auditor</span>, with strong credentials in Bank Audits and Governance.</>,
+      <>A passionate advocate for financial literacy and women\'s empowerment, she regularly conducts educational workshops and delivers lectures at professional forums. She currently serves as an <span className="font-bold">Independent Woman Director on listed companies</span>, offering strategic insight into governance, risk management, and financial oversight.</>,
     ],
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=600',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1773132667/K_vbu5ur.jpg',
     socials: {
       linkedin: '#',
       email: 'mailto:komal@example.com',
@@ -44,10 +45,10 @@ const team: TeamMember[] = [
     description: 'Chartered Accountant | Banking & Financial Advisory Expert',
     bio: [
       <>With nearly 20 years of global experience in the Banking & Financial Services industry, Richa has served in leadership roles with premier institutions like HSBC and Deutsche Bank across India, USA, UK, Hong Kong, and Germany. Her expertise lies in <span className="font-bold">Financial Advisory, Business Consultancy, Project Financing, Credit Evaluation, and Process Re-engineering</span>.</>,
-      <>A strategic thinker with a practical, results-oriented approach, she brings deep insight into <span className="font-bold">Accounts, Taxation, Regulatory Compliance, SOP design, and Implementation</span>. She has successfully led cross-functional transformation projects, driving significant process efficiencies and cost savings.</>,
+      <>A strategic thinker with a practical, results-oriented approach, she brings deep insight into <span className="font-bold">Accounts, Taxation, Regulatory Compliance, SOP design and Implementation</span>. She has successfully led cross-functional transformation projects, driving significant process efficiencies and cost savings.</>,
       <>Her certifications in <span className="font-bold">Valuation (ICAI), SME Finance (IIBF), and Investment Advisory (CISI, UK)</span> complement her strong foundation in financial management and corporate governance. A technology and AI enthusiast, she champions automation-led efficiency and innovation in finance.</>,
     ],
-    image: 'https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?auto=format&fit=crop&q=80&w=600',
+    image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1773132647/R_nbuc3v.jpg',
     socials: {
       linkedin: '#',
       email: 'mailto:richa@example.com',
@@ -84,10 +85,10 @@ function GlassCursor({ visible }: { visible: boolean }) {
         background: 'rgba(22,65,97,0.38)',
         backdropFilter: 'blur(14px) saturate(180%)',
         WebkitBackdropFilter: 'blur(14px) saturate(180%)',
-        border: '1.5px solid rgba(255,255,255,0.28)',
-        boxShadow: '0 8px 32px rgba(22,65,97,0.3), inset 0 1px 0 rgba(255,255,255,0.18)',
+        border: '1.5px solid rgba(226,236,247,0.28)',
+        boxShadow: '0 8px 32px rgba(22,65,97,0.3), inset 0 1px 0 rgba(226,236,247,0.18)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        color: '#fff', fontSize: 11, fontWeight: 700,
+        color: '#E2ECF7', fontSize: 11, fontWeight: 700,
         letterSpacing: '0.09em', textTransform: 'uppercase' as const,
         userSelect: 'none' as const,
       }}>
@@ -110,15 +111,15 @@ function SocialBtn({
       onClick={(e) => e.stopPropagation()}
       onMouseEnter={onEnter} onMouseLeave={onLeave}>
       <span
-        className="w-10 h-10 rounded-full flex items-center justify-center text-white"
+        className="w-10 h-10 rounded-full flex items-center justify-center text-brand-lightest"
         style={{
-          background: 'rgba(255,255,255,0.1)',
-          border: '1px solid rgba(255,255,255,0.2)',
+          background: 'rgba(226,236,247,0.1)',
+          border: '1px solid rgba(226,236,247,0.2)',
           backdropFilter: 'blur(8px)',
           transition: 'background 0.25s, transform 0.2s',
         }}
         onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(49,121,172,0.6)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(226,236,247,0.1)'; e.currentTarget.style.transform = 'translateY(0)'; }}
       >
         {icon}
       </span>
@@ -147,8 +148,8 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
         className="relative flex flex-col sm:flex-row overflow-hidden rounded-[2rem] w-full max-w-2xl max-h-[85vh] sm:max-h-[90vh]"
         style={{
           background: 'linear-gradient(135deg, #1a5278 0%, #0f3454 100%)',
-          border: '1px solid rgba(255,255,255,0.16)',
-          boxShadow: '0 40px 100px rgba(8,22,44,0.8), inset 0 1px 0 rgba(255,255,255,0.14)',
+          border: '1px solid rgba(226,236,247,0.16)',
+          boxShadow: '0 40px 100px rgba(8,22,44,0.8), inset 0 1px 0 rgba(226,236,247,0.14)',
         }}
         initial={{ opacity: 0, scale: 0.86, y: 32 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -157,8 +158,8 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
       >
         {/* Close */}
         <button onClick={onClose} aria-label="Close"
-          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-colors"
-          style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.18)', cursor: 'pointer' }}>
+          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full flex items-center justify-center text-brand-lightest/70 hover:text-brand-lightest transition-colors"
+          style={{ background: 'rgba(226,236,247,0.1)', border: '1px solid rgba(226,236,247,0.18)', cursor: 'pointer' }}>
           <X size={16} />
         </button>
 
@@ -168,7 +169,7 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
           style={{ background: '#c8d8e8' }}
           transition={{ type: 'spring', damping: 32, stiffness: 140, mass: 1.2 }}
         >
-          <Image src={member.image} alt={member.name} fill sizes="224px" className="object-cover object-[center_20%]" />
+          <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, 500px" quality={100} className="object-cover object-[center_20%]" />
         </motion.div>
 
         {/* RIGHT — info */}
@@ -181,33 +182,25 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
             <p className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: '#7BAFD4' }}>
               {member.role}
             </p>
-            <h3 className="text-2xl font-heading font-bold text-white leading-tight mb-1">
+            <h3 className="text-2xl font-heading font-bold text-brand-lightest leading-tight mb-1">
               {member.name}
             </h3>
-            <p className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            <p className="text-sm font-medium" style={{ color: 'rgba(226,236,247,0.65)' }}>
               {member.description}
             </p>
           </div>
 
-          <div style={{ height: 1, background: 'rgba(255,255,255,0.1)' }} />
+          <div style={{ height: 1, background: 'rgba(226,236,247,0.1)' }} />
 
           {/* Full bio paragraphs */}
           <div className="flex flex-col gap-3">
             {member.bio.map((para, i) => (
-              <p key={i} className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.62)' }}>
+              <p key={i} className="text-sm leading-relaxed" style={{ color: 'rgba(226,236,247,0.62)' }}>
                 {para}
               </p>
             ))}
           </div>
 
-          <div style={{ height: 1, background: 'rgba(255,255,255,0.1)' }} />
-
-          {/* Socials */}
-          <div className="flex items-center gap-3">
-            <SocialBtn href={member.socials.linkedin} icon={<Linkedin size={15} strokeWidth={1.5} />} label="LinkedIn" />
-            <SocialBtn href={member.socials.email} icon={<Mail size={15} strokeWidth={1.5} />} label="Email" />
-            <SocialBtn href={member.socials.phone} icon={<Phone size={15} strokeWidth={1.5} />} label="Phone" />
-          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -250,13 +243,13 @@ function ProfileCard({
 
         {/* Card body — plain div, no layoutId (only photo uses layoutId) */}
         <div
-          className="relative rounded-[2rem] flex flex-col items-center pb-8 gap-6"
+          className="relative rounded-[2rem] flex flex-col items-center pb-16"
           style={{
             width: 310,
-            paddingTop: PHOTO_H - OVERFLOW + 24,
+            paddingTop: PHOTO_H - OVERFLOW + 48,
             background: 'linear-gradient(160deg, #1a5278 0%, #0f3454 100%)',
-            border: '1px solid rgba(255,255,255,0.16)',
-            boxShadow: '0 32px 80px rgba(8,22,44,0.6), inset 0 1px 0 rgba(255,255,255,0.14)',
+            border: '1px solid rgba(226,236,247,0.16)',
+            boxShadow: '0 32px 80px rgba(8,22,44,0.6), inset 0 1px 0 rgba(226,236,247,0.14)',
           }}
         >
           {/* Top radial glow */}
@@ -264,29 +257,14 @@ function ProfileCard({
             style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(49,121,172,0.30) 0%, transparent 65%)' }} />
 
           {/* Text — always visible */}
-          <div className="relative z-10 flex flex-col items-center text-center gap-2 px-6">
-            <h3 className="font-heading font-bold text-white"
-              style={{ fontSize: 16, letterSpacing: '0.07em', textShadow: '0 2px 12px rgba(0,0,0,0.5)' }}>
-              {member.name.toUpperCase()}
+          <div className="relative z-10 flex flex-col items-center text-center gap-2 px-6 mt-2">
+            <h3 className="font-heading font-bold text-brand-lightest uppercase"
+              style={{ fontSize: 18, letterSpacing: '0.08em', textShadow: '0 2px 12px rgba(0,0,0,0.5)' }}>
+              {member.name}
             </h3>
-            <p className="font-semibold" style={{ fontSize: 13, color: '#7BAFD4' }}>
+            <p className="font-medium tracking-wide uppercase" style={{ fontSize: 13, color: '#7BAFD4' }}>
               {member.role}
             </p>
-            <p className="leading-relaxed mt-1" style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', maxWidth: 240 }}>
-              {member.description}
-            </p>
-          </div>
-
-          <div className="relative z-10" style={{ width: '80%', height: 1, background: 'rgba(255,255,255,0.1)' }} />
-
-          {/* Socials */}
-          <div className="relative z-10 flex items-center justify-center gap-3">
-            <SocialBtn href={member.socials.linkedin} icon={<Linkedin size={15} strokeWidth={1.5} />} label="LinkedIn"
-              onEnter={() => onCursorHover(false)} onLeave={() => onCursorHover(true)} />
-            <SocialBtn href={member.socials.email} icon={<Mail size={15} strokeWidth={1.5} />} label="Email"
-              onEnter={() => onCursorHover(false)} onLeave={() => onCursorHover(true)} />
-            <SocialBtn href={member.socials.phone} icon={<Phone size={15} strokeWidth={1.5} />} label="Phone"
-              onEnter={() => onCursorHover(false)} onLeave={() => onCursorHover(true)} />
           </div>
         </div>
 
@@ -296,12 +274,12 @@ function ProfileCard({
           style={{
             width: PHOTO_W, height: PHOTO_H, marginLeft: -(PHOTO_W / 2),
             background: '#d6e2ed',
-            boxShadow: '0 20px 56px rgba(8,22,44,0.6), 0 4px 16px rgba(8,22,44,0.35), 0 0 0 3px rgba(255,255,255,0.22)',
+            boxShadow: '0 20px 56px rgba(8,22,44,0.6), 0 4px 16px rgba(8,22,44,0.35), 0 0 0 3px rgba(226,236,247,0.22)',
           }}
           animate={{ y: hovered ? -14 : 0, scale: hovered ? 1.04 : 1 }}
           transition={{ type: 'spring', damping: 24, stiffness: 180, mass: 0.9 }}
         >
-          <Image src={member.image} alt={member.name} fill sizes="200px" className="object-cover object-[center_20%]" />
+          <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, 500px" quality={100} className="object-cover object-[center_20%]" style={{ transform: 'scale(1.30)' }} />
         </motion.div>
 
       </motion.div>
@@ -341,7 +319,7 @@ export default function Team() {
       </AnimatePresence>
 
       <section id="team" className="py-24 lg:py-32 relative overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #F4F6F9 0%, #dde6ef 50%, #c8d8e8 100%)' }}>
+        style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
 
         {/* Minimal decorative blobs */}
         <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
@@ -353,12 +331,21 @@ export default function Team() {
           <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="mb-24 text-center"
+            className="mb-14 lg:mb-24 text-center flex flex-col items-center justify-center w-full"
           >
-            <span className="text-sm font-bold tracking-widest uppercase text-brand-accent mb-6 block">Our Team</span>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-semibold leading-[1.1] text-brand-dark max-w-3xl mx-auto">
-              Led by dynamic finance professionals with a shared vision.
-            </h2>
+            <div className="flex items-center gap-4 sm:gap-6 mb-6">
+              <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-medium text-brand-dark tracking-tight capitalize">
+                Our Team
+              </h2>
+              <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />
+            </div>
+
+            <div className="w-full max-w-full overflow-x-auto hide-scrollbar sm:overflow-visible flex justify-center">
+              <p className="text-[clamp(14px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide whitespace-nowrap px-4 py-1">
+                Led by dynamic finance professionals with a shared vision.
+              </p>
+            </div>
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-12 lg:gap-20">
