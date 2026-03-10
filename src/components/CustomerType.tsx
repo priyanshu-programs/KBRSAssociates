@@ -60,11 +60,13 @@ export default function CustomerType() {
   return (
     <section id="customer-type" className="py-16 sm:py-24 lg:py-32 relative text-brand-dark" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
 
-      {/* Minimal decorative blobs */}
-      <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
-        style={{ background: 'radial-gradient(circle, #3179AC 0%, transparent 70%)' }} />
-      <div className="pointer-events-none absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
-        style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
+      {/* Minimal decorative blobs wrapped to prevent overflow without breaking sticky */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
+          style={{ background: 'radial-gradient(circle, #3179AC 0%, transparent 70%)' }} />
+        <div className="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
+          style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
+      </div>
 
       <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
 
