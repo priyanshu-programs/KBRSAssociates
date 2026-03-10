@@ -4,6 +4,8 @@ import { Linkedin } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 
+// Footer ticker CSS animation is in globals.css (@keyframes ticker-scroll)
+
 
 export default function Footer() {
   return (
@@ -17,22 +19,14 @@ export default function Footer() {
           WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
         }}
       >
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            repeat: Infinity,
-            ease: "linear",
-            duration: 80,
-          }}
-          className="flex whitespace-nowrap"
-        >
-          <span className="text-[12rem] md:text-[20rem] lg:text-[28rem] xl:text-[34rem] font-heading font-black text-brand-lightest leading-none tracking-tighter mix-blend-overlay block pr-16 md:pr-32">
+        <div className="flex whitespace-nowrap animate-ticker-scroll">
+          <span className="text-[12rem] md:text-[20rem] lg:text-[28rem] xl:text-[34rem] font-heading font-black text-brand-lightest leading-none tracking-tighter block pr-16 md:pr-32">
             K B R S &amp; ASSOCIATES
           </span>
-          <span className="text-[12rem] md:text-[20rem] lg:text-[28rem] xl:text-[34rem] font-heading font-black text-brand-lightest leading-none tracking-tighter mix-blend-overlay block pr-16 md:pr-32">
+          <span className="text-[12rem] md:text-[20rem] lg:text-[28rem] xl:text-[34rem] font-heading font-black text-brand-lightest leading-none tracking-tighter block pr-16 md:pr-32">
             K B R S &amp; ASSOCIATES
           </span>
-        </motion.div>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col min-h-[400px]">

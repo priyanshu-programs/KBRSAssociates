@@ -178,8 +178,8 @@ export default function Experience() {
                                         }}
                                     >
                                         {[
-                                            "https://res.cloudinary.com/ddooeqf5m/image/upload/v1773132667/K_vbu5ur.jpg",
-                                            "https://res.cloudinary.com/ddooeqf5m/image/upload/v1773132647/R_nbuc3v.jpg",
+                                            "https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1773132667/K_vbu5ur.jpg",
+                                            "https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1773132647/R_nbuc3v.jpg",
                                         ].map((src, i) => (
                                             <motion.div
                                                 key={i}
@@ -257,14 +257,14 @@ export default function Experience() {
                     <div className="w-full max-w-[1920px] mx-auto px-6 sm:px-12 xl:px-0">
                         <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
                             <Image
-                                src="https://res.cloudinary.com/ddooeqf5m/image/upload/v1772987422/pexels-masoodaslami-6546380_tvfomw.jpg"
+                                src="https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772987422/pexels-masoodaslami-6546380_tvfomw.jpg"
                                 alt="Corporate Building Setup"
                                 fill
                                 sizes="100vw"
                                 className="object-cover"
                             />
                             {/* Brand-colored tint overlay */}
-                            <div className="absolute inset-0 bg-brand-dark/50 mix-blend-multiply pointer-events-none" />
+                            <div className="absolute inset-0 bg-brand-dark/50 pointer-events-none" />
                         </div>
                     </div>
                 </motion.div>

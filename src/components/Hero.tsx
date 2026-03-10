@@ -60,10 +60,10 @@ const fadeUpVariants: Variants = {
 };
 
 const HERO_IMAGES = [
-  "https://res.cloudinary.com/ddooeqf5m/image/upload/v1772978771/hero-image_dnii3j.jpg",
-  "https://res.cloudinary.com/ddooeqf5m/image/upload/v1772980231/Whisk_6abfee4d6332e1fbe244f36d34b11ebbeg_mjgnru.png",
-  "https://res.cloudinary.com/ddooeqf5m/image/upload/v1772982571/Whisk_d20a9c4e48d3df5b220400a748d7ec78dr_aoemle.png",
-  "https://res.cloudinary.com/ddooeqf5m/image/upload/v1772983047/Whisk_f47bf8a8ad77fa48c164673cabd98f34dr_ufulms.jpg"
+  "https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772978771/hero-image_dnii3j.jpg",
+  "https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772980231/Whisk_6abfee4d6332e1fbe244f36d34b11ebbeg_mjgnru.png",
+  "https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772982571/Whisk_d20a9c4e48d3df5b220400a748d7ec78dr_aoemle.png",
+  "https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772983047/Whisk_f47bf8a8ad77fa48c164673cabd98f34dr_ufulms.jpg"
 ];
 
 export default function Hero() {
@@ -133,7 +133,7 @@ export default function Hero() {
                     src={src}
                     alt={`Hero Background ${index + 1}`}
                     fill
-                    priority={true} // Preload all images to prevent blank screens
+                    priority={index === 0}
                     sizes="(max-width: 1920px) 100vw, 1920px"
                     className="object-cover object-center md:object-top origin-center"
                   />
@@ -141,7 +141,7 @@ export default function Hero() {
               </motion.div>
             );
           })}
-          <div className="absolute inset-0 bg-black/50 mix-blend-multiply z-10 transition-colors duration-1000 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none"></div>
         </div>
 
         {/* Content Wrapper */}
@@ -173,11 +173,11 @@ export default function Hero() {
         {/* Bottom Right Cutout Area */}
         <motion.div
           variants={cardRevealVariants}
-          className="absolute bottom-0 right-[-1.1875rem] max-[30rem]:left-8 z-20 bg-section-a pt-1.5 pl-1.5 sm:pt-4 sm:pl-4 rounded-tl-[1rem]"
+          className="absolute bottom-0 right-0 sm:right-[-1.1875rem] z-20 bg-section-a pt-1.5 pl-1.5 sm:pt-4 sm:pl-4 rounded-tl-[1rem]"
         >
 
           {/* Top Inverted Corner */}
-          <div className="absolute -top-1.5 sm:-top-4 right-[1.1875rem] w-1.5 sm:w-4 h-1.5 sm:h-4 pointer-events-none">
+          <div className="absolute -top-1.5 sm:-top-4 right-0 sm:right-[1.1875rem] w-1.5 sm:w-4 h-1.5 sm:h-4 pointer-events-none">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-section-a" preserveAspectRatio="none">
               <path d="M0,100 C55.228475,100 100,55.228475 100,0 L100,100 L0,100 Z" />
             </svg>
@@ -191,7 +191,7 @@ export default function Hero() {
           </div>
 
           {/* Blue Content Card */}
-          <div className="rounded-tl-[1rem] rounded-bl-[1rem] p-8 md:p-10 w-full max-w-[450px] lg:max-w-[550px] shadow-lg" style={{ background: 'linear-gradient(0deg, #1A4A6D 0%, #2A648F 50%, #3B82B8 100%)' }}>
+          <div className="rounded-tl-[1rem] rounded-bl-[1rem] p-5 sm:p-8 md:p-10 w-full max-w-[85vw] sm:max-w-[450px] lg:max-w-[550px] shadow-lg" style={{ background: 'linear-gradient(0deg, #1A4A6D 0%, #2A648F 50%, #3B82B8 100%)' }}>
             <p className="text-brand-lightest/90 text-[15px] md:text-base leading-relaxed mb-8 font-light">
               We transform client expectations into sustainable reality through a blend of subject matter expertise and exceptional service.
             </p>

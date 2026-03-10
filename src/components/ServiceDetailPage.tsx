@@ -37,7 +37,6 @@ export default function ServiceDetailPage({ service }: { service: ServiceDetail 
                         alt={service.title}
                         fill
                         priority
-                        unoptimized={true}
                         sizes="100vw"
                         className="object-cover"
                     />
