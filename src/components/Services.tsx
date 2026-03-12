@@ -247,6 +247,16 @@ const ServiceCard = memo(function ServiceCard({
   );
 });
 
+/**
+ * Render the responsive Services section with an animated accordion of service cards.
+ *
+ * Renders a header and a row/column of memoized ServiceCard components driven by the local
+ * services array. On viewports ≤ 1023px the first card is opened by default; on larger viewports
+ * all cards start closed. Hovering a card (desktop) or clicking a card (desktop and mobile)
+ * activates that card; mouse-leave collapses the active card on desktop.
+ *
+ * @returns The Services section as a JSX element.
+ */
 export default function Services() {
   // On mobile/tablet (<lg) default the first card open; on desktop start closed.
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

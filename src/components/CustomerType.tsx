@@ -56,6 +56,14 @@ const clients = [
   },
 ];
 
+/**
+ * Render a scrollable, animated gallery of customer-type cards with background images and per-item accent styling.
+ *
+ * The section includes a header with title and description, decorative background blobs, and a horizontally scrollable
+ * stack of cards. Each card shows a background image, a colored accent line, an animated icon badge, and the client title.
+ *
+ * @returns A JSX element representing the "Customer Types" section containing the animated card stack.
+ */
 export default function CustomerType() {
   return (
     <section id="customer-type" className="py-16 sm:py-24 lg:py-32 relative text-brand-dark" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>

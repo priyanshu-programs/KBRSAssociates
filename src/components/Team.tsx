@@ -218,6 +218,16 @@ const PHOTO_W = 200;
 const PHOTO_H = 230;
 const OVERFLOW = 64;
 
+/**
+ * Renders a profile card for a team member with an animated floating photo, hover effects, and click-to-open behavior.
+ *
+ * @param member - The team member data to display (name, role, image, etc.).
+ * @param delay - Animation entrance delay in seconds for staggering cards.
+ * @param onCursorHover - Callback invoked with `true` when the card is hovered and `false` when hover ends.
+ * @param onOpen - Callback invoked when the card is clicked to open the member modal.
+ * @param isOpen - Whether a member modal is currently open; when `true` the card hides interactive elements to avoid layout conflicts.
+ * @returns A React element representing the animated profile card.
+ */
 function ProfileCard({
   member, delay, onCursorHover, onOpen, isOpen,
 }: {
@@ -292,7 +302,13 @@ function ProfileCard({
   );
 }
 
-// ─── Section ─────────────────────────────────────────────────────────────────
+/**
+ * Renders the Team section containing animated profile cards, a decorative cursor, and member detail modals.
+ *
+ * When a member modal is open, native page scroll is locked and the Lenis smooth-scrolling instance is paused; closing the modal restores scrolling.
+ *
+ * @returns The Team section React element
+ */
 export default function Team() {
   const [cursorVisible, setCursorVisible] = useState(false);
   const [openMember, setOpenMember] = useState<Member | null>(null);

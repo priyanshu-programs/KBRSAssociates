@@ -1,6 +1,11 @@
 "use client";
 import { motion } from 'motion/react';
 
+/**
+ * Render the "About K B R S" section with responsive layout, decorative radial blobs, animated image and text blocks, and a two-item statistics row.
+ *
+ * @returns A JSX element representing the About section for the page.
+ */
 export default function About() {
   return (
     <section id="about" className="py-16 sm:py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
