@@ -27,6 +27,11 @@ body {
   @apply font-sans text-brand-dark bg-brand-light antialiased overflow-x-hidden;
 }
 
+body, div, p, span, h1, h2, h3, h4, h5, h6, li, blockquote, a {
+  /* text-align: justify !important; */
+  /* text-justify: inter-word !important; */
+}
+
 h1,
 h2,
 h3,

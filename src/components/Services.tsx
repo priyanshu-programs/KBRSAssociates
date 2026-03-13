@@ -40,7 +40,7 @@ const services: ServiceItem[] = [
     itemColor: 'bg-brand-dark',
     image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772988896/gst-corporate-laws_ljbr92.jpg',
     items: [
-      'GST Registration, Returns, and Litigation',
+      'GST Registration, Returns and Litigation',
       'Company Formation & Striking Off',
       'Partnerships & LLP Formation',
       'Trust Formation & Advisory',
@@ -230,7 +230,7 @@ const ServiceCard = memo(function ServiceCard({
             {service.items.map((item, i) => (
               <li key={i} className="flex items-start gap-4 text-brand-lightest/90 text-[15px] lg:text-base font-medium leading-relaxed">
                 <span className={`w-2 h-2 rounded-full ${service.itemColor} mt-2 shrink-0 ring-2 ring-brand-lightest/30`} />
-                <span>{item}</span>
+                <span className="text-left">{item}</span>
               </li>
             ))}
           </ul>
@@ -300,7 +300,7 @@ export default function Services() {
           <div className="flex items-center gap-4 sm:gap-6 mb-6">
             <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-medium text-brand-dark tracking-tight capitalize">
-              Our Services
+              Services Offered
             </h2>
             <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />
           </div>

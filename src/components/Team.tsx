@@ -26,10 +26,10 @@ const team: TeamMember[] = [
     role: 'Partner',
     description: 'Chartered Accountant | GST & Taxation Expert | Independent Director | Company Secretary',
     bio: [
-      <>Komal is an accomplished Chartered Accountant and Company Secretary with a robust background in <span className="font-bold">Auditing, Taxation, GST Litigation, and Financial Compliance</span>.</>,
+      <>Komal is an accomplished Chartered Accountant and Company Secretary with a robust background in <span className="font-bold">Auditing, Taxation, GST Litigation and Financial Compliance</span>.</>,
       <>She brings over a decade of experience in advising clients on complex statutory and regulatory matters.</>,
       <>Her leadership in <span className="font-bold">Indirect Taxation</span> earned her the role of <span className="font-medium">Special Invitee to the GST & Indirect Taxes Committee</span>. She is also a <span className="font-bold">Certified Information System Auditor (DISA)</span> and <span className="font-bold">Certified Social Auditor</span>, with strong credentials in Bank Audits and Governance.</>,
-      <>A passionate advocate for financial literacy and women\'s empowerment, she regularly conducts educational workshops and delivers lectures at professional forums. She currently serves as an <span className="font-bold">Independent Woman Director on listed companies</span>, offering strategic insight into governance, risk management, and financial oversight.</>,
+      <>A passionate advocate for financial literacy and women&apos;s empowerment, she regularly conducts educational workshops and delivers lectures at professional forums. She currently serves as an <span className="font-bold">Independent Woman Director on listed companies</span>, offering strategic insight into governance, risk management and financial oversight.</>,
     ],
     image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1773132667/K_vbu5ur.jpg',
     socials: {
@@ -44,9 +44,9 @@ const team: TeamMember[] = [
     role: 'Partner',
     description: 'Chartered Accountant | Banking & Financial Advisory Expert',
     bio: [
-      <>With nearly 20 years of global experience in the Banking & Financial Services industry, Richa has served in leadership roles with premier institutions like HSBC and Deutsche Bank across India, USA, UK, Hong Kong, and Germany. Her expertise lies in <span className="font-bold">Financial Advisory, Business Consultancy, Project Financing, Credit Evaluation, and Process Re-engineering</span>.</>,
+      <>With nearly 20 years of global experience in the Banking & Financial Services industry, Richa has served in leadership roles with premier institutions like HSBC and Deutsche Bank across India, USA, UK, Hong Kong and Germany. Her expertise lies in <span className="font-bold">Financial Advisory, Business Consultancy, Project Financing, Credit Evaluation and Process Re-engineering</span>.</>,
       <>A strategic thinker with a practical, results-oriented approach, she brings deep insight into <span className="font-bold">Accounts, Taxation, Regulatory Compliance, SOP design and Implementation</span>. She has successfully led cross-functional transformation projects, driving significant process efficiencies and cost savings.</>,
-      <>Her certifications in <span className="font-bold">Valuation (ICAI), SME Finance (IIBF), and Investment Advisory (CISI, UK)</span> complement her strong foundation in financial management and corporate governance. A technology and AI enthusiast, she champions automation-led efficiency and innovation in finance.</>,
+      <>Her certifications in <span className="font-bold">Valuation (ICAI), SME Finance (IIBF) and Investment Advisory (CISI, UK)</span> complement her strong foundation in financial management and corporate governance. A technology and AI enthusiast, she champions automation-led efficiency and innovation in finance.</>,
     ],
     image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1773132647/R_nbuc3v.jpg',
     socials: {
@@ -151,7 +151,7 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
     >
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className="relative flex flex-col sm:flex-row overflow-hidden rounded-[2rem] w-full max-w-2xl max-h-[85vh] sm:max-h-[90vh]"
+        className="relative flex flex-col sm:flex-row overflow-hidden rounded-[2rem] w-full max-w-[860px] max-h-[85vh] sm:max-h-[90vh]"
         style={{
           background: 'linear-gradient(135deg, #1a5278 0%, #0f3454 100%)',
           border: '1px solid rgba(226,236,247,0.16)',
@@ -180,28 +180,29 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
 
         {/* RIGHT — info */}
         <div
-          className="modal-scroll flex flex-col justify-start gap-4 p-5 sm:p-7 overflow-y-auto flex-1 min-h-0"
+          className="modal-scroll flex flex-col justify-start gap-4 p-5 sm:p-7 overflow-y-auto flex-1 min-h-0 w-full"
           data-lenis-prevent
+          style={{ alignItems: 'stretch' }}
         >
           {/* Role badge + name + tagline */}
-          <div>
+          <div className="w-full flex flex-col items-center text-center">
             <p className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: '#7BAFD4' }}>
               {member.role}
             </p>
             <h3 className="text-2xl font-heading font-bold text-brand-lightest leading-tight mb-1">
               {member.name}
             </h3>
-            <p className="text-sm font-medium" style={{ color: 'rgba(226,236,247,0.65)' }}>
+            <p className="w-full whitespace-normal sm:whitespace-nowrap" style={{ color: 'rgba(226,236,247,0.65)', fontSize: '0.825rem', fontWeight: 500 }}>
               {member.description}
             </p>
           </div>
 
-          <div style={{ height: 1, background: 'rgba(226,236,247,0.1)' }} />
+          <div style={{ height: 1, background: 'rgba(226,236,247,0.1)', width: '100%' }} />
 
           {/* Full bio paragraphs */}
-          <div className="flex flex-col gap-3">
+          <div className="w-full" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {member.bio.map((para, i) => (
-              <p key={i} className="text-sm leading-relaxed" style={{ color: 'rgba(226,236,247,0.62)' }}>
+              <p key={i} className="w-full" style={{ color: 'rgba(226,236,247,0.62)', fontSize: '0.875rem', lineHeight: '1.625' }}>
                 {para}
               </p>
             ))}

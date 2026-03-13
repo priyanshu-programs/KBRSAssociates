@@ -18,8 +18,8 @@ export type ServiceDetail = {
 export const serviceDetails: ServiceDetail[] = [
     {
         slug: 'accounts-audit-income-tax',
-        title: 'Accounts, Audit & Income Tax',
-        tagline: 'Precision-driven accounting, audit, and tax solutions that empower confident decision-making.',
+        title: 'Accounts, Audit & Income\u00A0Tax',
+        tagline: 'Precision-driven accounting, audit and tax solutions that empower confident decision-making.',
         iconName: 'FileText',
         itemColor: 'bg-brand-accent',
         accentHex: '#3179AC',
@@ -28,7 +28,7 @@ export const serviceDetails: ServiceDetail[] = [
             {
                 title: 'Preparation & Finalisation of Accounts',
                 line1: 'Ensuring accurate and compliant preparation of financial statements with structured closing of books.',
-                line2: 'Delivered with precision to support statutory reporting, tax filings, and informed decision-making.',
+                line2: 'Delivered with precision to support statutory reporting, tax filings and informed decision-making.',
             },
             {
                 title: 'Income Tax Return Filing & Tax Planning',
@@ -37,7 +37,7 @@ export const serviceDetails: ServiceDetail[] = [
             },
             {
                 title: 'TDS Returns',
-                line1: 'Comprehensive management of TDS deduction, deposit, and quarterly return filing.',
+                line1: 'Comprehensive management of TDS deduction, deposit and quarterly return filing.',
                 line2: 'Includes timely compliance monitoring to avoid penalties and ensure seamless reconciliation.',
             },
             {
@@ -47,23 +47,23 @@ export const serviceDetails: ServiceDetail[] = [
             },
             {
                 title: 'Internal Audits',
-                line1: 'Risk-based internal audit procedures to assess internal controls, operational efficiency, and governance.',
+                line1: 'Risk-based internal audit procedures to assess internal controls, operational efficiency and governance.',
                 line2: 'Delivers actionable insights to strengthen processes and safeguard organisational assets.',
             },
             {
                 title: 'Tax Audits',
                 line1: 'Detailed verification of books and transactions as mandated under the Income Tax Act.',
-                line2: 'Ensures accuracy in reporting, compliance with tax laws, and risk mitigation during assessments.',
+                line2: 'Ensures accuracy in reporting, compliance with tax laws and risk mitigation during assessments.',
             },
             {
                 title: 'Social Audits',
-                line1: 'Evaluation of welfare-oriented schemes, CSR initiatives, and institution-specific social obligations.',
-                line2: 'Provides transparent reporting to stakeholders on effectiveness, utilisation, and impact.',
+                line1: 'Evaluation of welfare-oriented schemes, CSR initiatives and institution-specific social obligations.',
+                line2: 'Provides transparent reporting to stakeholders on effectiveness, utilisation and impact.',
             },
             {
                 title: 'Scrutiny Assessment & Appeals',
                 line1: 'Professional representation before tax authorities for scrutiny cases and appellate proceedings.',
-                line2: 'Includes documentation, strategy, and end-to-end handling to safeguard taxpayer interests.',
+                line2: 'Includes documentation, strategy and end-to-end handling to safeguard taxpayer interests.',
             },
         ],
     },
@@ -77,9 +77,9 @@ export const serviceDetails: ServiceDetail[] = [
         image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/v1772988896/gst-corporate-laws_ljbr92.jpg',
         subServices: [
             {
-                title: 'GST Registration, Returns, and Litigation Handling',
-                line1: 'Assistance with GST registration, periodic returns, reconciliations, and compliance management.',
-                line2: 'Representation and support in GST notices, disputes, and litigation matters.',
+                title: 'GST Registration, Returns and Litigation Handling',
+                line1: 'Assistance with GST registration, periodic returns, reconciliations and compliance management.',
+                line2: 'Representation and support in GST notices, disputes and litigation matters.',
             },
             {
                 title: 'Company Formation & Striking Off',
@@ -88,28 +88,28 @@ export const serviceDetails: ServiceDetail[] = [
             },
             {
                 title: 'Partnerships & LLP Formation',
-                line1: 'Drafting, registration, and compliance support for partnership firms and LLPs.',
+                line1: 'Drafting, registration and compliance support for partnership firms and LLPs.',
                 line2: 'Ensures legally robust agreements aligned with business objectives.',
             },
             {
                 title: 'Trust Formation & Advisory',
-                line1: 'End-to-end assistance in establishing trusts, societies, and Section 8 entities.',
-                line2: 'Covers drafting, registration, compliance, and ongoing advisory support.',
+                line1: 'End-to-end assistance in establishing trusts, societies and Section 8 entities.',
+                line2: 'Covers drafting, registration, compliance and ongoing advisory support.',
             },
             {
                 title: 'ROC Filings',
-                line1: 'Management of annual filings, event-based compliances, and MCA reporting requirements.',
+                line1: 'Management of annual filings, event-based compliances and MCA reporting requirements.',
                 line2: 'Ensures timely adherence to corporate law obligations to avoid penalties.',
             },
             {
                 title: 'GST Annual Audits, Notices & Representation',
                 line1: 'Detailed reconciliation and certification for GST annual audits.',
-                line2: 'Includes expert handling of notices, assessments, and departmental representation.',
+                line2: 'Includes expert handling of notices, assessments and departmental representation.',
             },
             {
                 title: 'Corporate Governance & Compliance Advisory',
-                line1: 'Advisory support to strengthen governance frameworks, policies, and legal compliance.',
-                line2: 'Focuses on ethical, transparent, and legally compliant organisational functioning.',
+                line1: 'Advisory support to strengthen governance frameworks, policies and legal compliance.',
+                line2: 'Focuses on ethical, transparent and legally compliant organisational functioning.',
             },
         ],
     },
@@ -130,7 +130,7 @@ export const serviceDetails: ServiceDetail[] = [
             {
                 title: 'MSME / FSSAI / RERA / Import-Export Code Registrations',
                 line1: 'End-to-end support for industry-specific registrations critical for business operations.',
-                line2: 'Covers documentation, submission, and advisory for smooth approval.',
+                line2: 'Covers documentation, submission and advisory for smooth approval.',
             },
             {
                 title: 'Digital Signature & Professional Tax Registration',
@@ -139,7 +139,7 @@ export const serviceDetails: ServiceDetail[] = [
             },
             {
                 title: 'Trade Mark Registration',
-                line1: 'Comprehensive assistance in trademark search, application filing, and objection handling.',
+                line1: 'Comprehensive assistance in trademark search, application filing and objection handling.',
                 line2: 'Protects brand identity through enforceable intellectual property rights.',
             },
         ],
@@ -155,28 +155,28 @@ export const serviceDetails: ServiceDetail[] = [
         subServices: [
             {
                 title: 'Business Valuation',
-                line1: 'Objective valuation services for mergers, acquisitions, investments, and regulatory needs.',
+                line1: 'Objective valuation services for mergers, acquisitions, investments and regulatory needs.',
                 line2: 'Delivered using accepted valuation standards to support informed decision-making.',
             },
             {
                 title: 'Bank Funding / Project Financing',
-                line1: 'Preparation of financial projections, DPRs, and documentation for bank loans or funding.',
+                line1: 'Preparation of financial projections, DPRs and documentation for bank loans or funding.',
                 line2: 'Supports clients in securing optimal finance terms through structured financial proposals.',
             },
             {
                 title: 'SOP Preparation & Implementation',
                 line1: 'Development of clear, practical Standard Operating Procedures tailored to organisational needs.',
-                line2: 'Ensures consistency, accountability, and improved operational performance.',
+                line2: 'Ensures consistency, accountability and improved operational performance.',
             },
             {
                 title: 'PF / ESI Returns and Filings',
-                line1: 'Complete compliance support for PF and ESI registrations, contributions, and periodic filings.',
+                line1: 'Complete compliance support for PF and ESI registrations, contributions and periodic filings.',
                 line2: 'Prevents statutory lapses and ensures smooth employee-benefit administration.',
             },
             {
                 title: 'Comprehensive Training in Finance, Corporate Laws and Basic AI',
-                line1: 'Structured training modules covering essential finance, regulatory compliance, and introductory AI skills.',
-                line2: 'Designed to build competence for professionals, students, and organisational teams.',
+                line1: 'Structured training modules covering essential finance, regulatory compliance and introductory AI skills.',
+                line2: 'Designed to build competence for professionals, students and organisational teams.',
             },
             {
                 title: 'Accounting & Allied Services to International Clients',
