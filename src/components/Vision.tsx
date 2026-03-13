@@ -24,7 +24,7 @@ const words = [
   { text: "growth", highlight: true },
   { text: "through", highlight: false },
   { text: "strategic,", highlight: false },
-  { text: "compliant,", highlight: false },
+  { text: "compliant", highlight: false },
   { text: "and", highlight: false },
   { text: "technology-enabled", highlight: false },
   { text: "financial", highlight: false },
@@ -104,14 +104,15 @@ export default function Vision() {
           {/* Scroll-driven word-by-word text reveal */}
           <p
             ref={textRef}
-            className="flex flex-wrap justify-center gap-x-[0.25em] gap-y-2 sm:gap-y-3 text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-heading font-medium leading-[1.35]"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-heading font-medium leading-[1.35] text-center"
           >
             <motion.span
-              className="text-brand-gray/30 leading-none"
+              className="text-brand-gray/30 leading-none inline-block align-bottom"
               style={{ opacity: useTransform(smoothProgress, [0, 0.05], [0.1, 0.4]) }}
             >
               &ldquo;
             </motion.span>
+            {" "}
             {words.map((word, i) => {
               const start = i / words.length;
               const overlapEnd = start + (3 / words.length);
@@ -119,12 +120,12 @@ export default function Vision() {
 
               if (i === words.length - 1) {
                 return (
-                  <span key={i} className="whitespace-nowrap flex items-end">
+                  <span key={i} className="whitespace-nowrap inline-flex items-end">
                     <Word progress={smoothProgress} range={[start, end]} isHighlight={word.highlight}>
                       {word.text}
                     </Word>
                     <motion.span
-                      className="text-brand-gray/30 leading-none pl-[0.1em]"
+                      className="text-brand-gray/30 leading-none pl-[0.1em] inline-block"
                       style={{ opacity: useTransform(smoothProgress, [0.95, 1], [0, 0.4]) }}
                     >
                       &rdquo;
@@ -134,9 +135,14 @@ export default function Vision() {
               }
 
               return (
-                <Word key={i} progress={smoothProgress} range={[start, end]} isHighlight={word.highlight}>
-                  {word.text}
-                </Word>
+                <span key={i}>
+                  <span className="inline-block mb-2 sm:mb-3 align-bottom">
+                    <Word progress={smoothProgress} range={[start, end]} isHighlight={word.highlight}>
+                      {word.text}
+                    </Word>
+                  </span>
+                  {" "}
+                </span>
               );
             })}
           </p>

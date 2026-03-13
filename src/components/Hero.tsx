@@ -192,7 +192,7 @@ export default function Hero() {
 
           {/* Blue Content Card */}
           <div className="rounded-tl-[1rem] rounded-bl-[1rem] p-4 sm:p-8 md:p-10 w-full max-w-[75vw] sm:max-w-[450px] lg:max-w-[550px] shadow-lg" style={{ background: 'linear-gradient(0deg, #1A4A6D 0%, #2A648F 50%, #3B82B8 100%)' }}>
-            <p className="text-brand-lightest/90 text-[13px] sm:text-[15px] md:text-base leading-relaxed mb-4 sm:mb-8 font-light">
+            <p className="text-brand-lightest/90 text-[13px] sm:text-[15px] md:text-base leading-relaxed mb-4 sm:mb-8 font-light text-justify">
               We transform client expectations into sustainable reality through a blend of subject matter expertise and exceptional service.
             </p>
 

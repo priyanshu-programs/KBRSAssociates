@@ -9,7 +9,7 @@ const clients = [
   {
     id: '01',
     title: 'Individuals & HUFs',
-    description: 'Personalized wealth management, tax return filing, and strategic investment structuring for personal financial growth.',
+    description: 'Personalized wealth management, tax return filing and strategic investment structuring for personal financial growth.',
     icon: <Users size={56} strokeWidth={1.5} />,
     accent: '#3B82B8',
     image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200',
@@ -17,7 +17,7 @@ const clients = [
   {
     id: '02',
     title: 'Partnership Firms',
-    description: 'Financial structuring, tax planning, and statutory compliance for joint ventures and collaborative business models.',
+    description: 'Financial structuring, tax planning and statutory compliance for joint ventures and collaborative business models.',
     icon: <Handshake size={56} strokeWidth={1.5} />,
     accent: '#2A648F',
     image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200',
@@ -25,7 +25,7 @@ const clients = [
   {
     id: '03',
     title: 'LLP (Limited Liability Partnerships)',
-    description: 'Governance, compliance, and strategic advisory tailored for limited liability structures and modern enterprises.',
+    description: 'Governance, compliance and strategic advisory tailored for limited liability structures and modern enterprises.',
     icon: <Scale size={56} strokeWidth={1.5} />,
     accent: '#1A4A6D',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1200',
@@ -33,7 +33,7 @@ const clients = [
   {
     id: '04',
     title: 'Corporates',
-    description: 'Comprehensive compliance, audit, and strategic financial advisory for large-scale enterprise operations.',
+    description: 'Comprehensive compliance, audit and strategic financial advisory for large-scale enterprise operations.',
     icon: <Building size={56} strokeWidth={1.5} />,
     accent: '#3B82B8',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200',
@@ -41,7 +41,7 @@ const clients = [
   {
     id: '05',
     title: 'Trusts / NGOs',
-    description: 'Governance, specialized auditing, and strict regulatory compliance for non-profit organizations and trusts.',
+    description: 'Governance, specialized auditing and strict regulatory compliance for non-profit organizations and trusts.',
     icon: <Globe size={56} strokeWidth={1.5} />,
     accent: '#2A648F',
     image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1200',
@@ -49,7 +49,7 @@ const clients = [
   {
     id: '06',
     title: 'Residential Societies',
-    description: 'Accounting, transparent auditing, and compliance management for housing societies and resident welfare.',
+    description: 'Accounting, transparent auditing and compliance management for housing societies and resident welfare.',
     icon: <Home size={56} strokeWidth={1.5} />,
     accent: '#1A4A6D',
     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200',

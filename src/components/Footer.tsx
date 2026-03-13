@@ -50,11 +50,11 @@ export default function Footer() {
                 />
               </div>
               <span className="font-heading font-bold text-xl leading-tight text-brand-lightest tracking-wide">
-                K B R S &amp; ASSOCIATES.
+                K B R S & ASSOCIATES.
               </span>
             </div>
-            <p className="text-[15px] leading-relaxed font-medium text-brand-lightest/80 pr-4 xl:pr-8">
-              K B R S &amp; ASSOCIATES. is a trusted CA firm with years of experience, offering expert services in financial compliance, taxation, and advisory.
+            <p className="text-[15px] leading-relaxed font-medium text-brand-lightest/80 text-left">
+              K B R S & ASSOCIATES. is a trusted CA firm with years of experience, offering expert services in financial compliance, taxation and advisory.
             </p>
           </div>
 

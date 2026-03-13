@@ -157,8 +157,8 @@ export default function Experience() {
                                 }}
                                 className="mb-12 xl:mb-16 relative z-10"
                             >
-                                <motion.p variants={fadeUpItem} className="text-[#2B3042]/80 text-[15px] sm:text-[17px] font-medium tracking-wide leading-relaxed">
-                                    We deliver comprehensive, technology-driven, and client-focused financial solutions.
+                                <motion.p variants={fadeUpItem} className="text-[#2B3042]/80 text-[15px] sm:text-[17px] font-medium tracking-wide leading-relaxed max-w-md text-justify">
+                                    We deliver comprehensive, technology-driven and client-focused financial solutions.
                                 </motion.p>
                             </motion.div>
 

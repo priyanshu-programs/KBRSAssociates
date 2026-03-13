@@ -83,7 +83,7 @@ export default function ServiceDetailPage({ service }: { service: ServiceDetail 
                             <Icon className="w-8 h-8 md:w-10 md:h-10" />
                         </div>
                         <span className="text-xs md:text-sm font-bold tracking-[0.25em] uppercase text-brand-lightest/80">
-                            Our Services
+                            Services Offered
                         </span>
                     </motion.div>
 
@@ -91,7 +91,7 @@ export default function ServiceDetailPage({ service }: { service: ServiceDetail 
                         initial={{ opacity: 0, scale: 0.95, y: 30 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-heading font-semibold text-brand-lightest leading-[1.1] max-w-5xl drop-shadow-2xl"
+                        className="text-4xl sm:text-[2.75rem] md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[5rem] font-heading font-semibold text-brand-lightest leading-[1.1] w-full px-4 drop-shadow-2xl whitespace-pre-wrap md:whitespace-nowrap"
                     >
                         {service.title}
                     </motion.h1>
@@ -106,24 +106,9 @@ export default function ServiceDetailPage({ service }: { service: ServiceDetail 
                 />
 
                 <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-14 lg:mb-18"
-                    >
-                        <span className="text-sm font-bold tracking-widest uppercase mb-3 block"
-                            style={{ color: service.accentHex }}
-                        >
-                            What we offer
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-semibold text-brand-dark leading-[1.1]">
-                            Detailed service breakdown
-                        </h2>
-                    </motion.div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+                    <div className="grid sm:grid-cols-2 gap-6 lg:gap-10 max-w-6xl mx-auto">
                         {service.subServices.map((sub, i) => (
                             <motion.div
                                 key={i}
@@ -132,32 +117,31 @@ export default function ServiceDetailPage({ service }: { service: ServiceDetail 
                                 whileInView="visible"
                                 viewport={{ once: true, margin: "-60px" }}
                                 variants={fadeUp}
-                                className="group relative bg-brand-lightest rounded-2xl p-7 sm:p-8 shadow-[0_2px_24px_rgba(0,0,0,0.04)] border border-brand-dark/[0.06] hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500 overflow-hidden"
+                                className="group relative bg-white/60 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-[0_2px_24px_rgba(0,0,0,0.03)] border border-white/50 hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-500 overflow-hidden flex flex-col"
                             >
-                                {/* Left accent bar */}
+                                {/* Subtle top shimmer line */}
                                 <div
-                                    className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                                    style={{ background: service.accentHex }}
+                                    className="absolute left-0 top-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[2px]"
+                                    style={{ background: `linear-gradient(90deg, transparent, ${service.accentHex}, transparent)` }}
                                 />
 
-                                {/* Number badge */}
-                                <div
-                                    className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold text-brand-lightest mb-5 shadow-md"
-                                    style={{ background: service.accentHex }}
-                                >
-                                    {String(i + 1).padStart(2, '0')}
+                                <div className="mb-5 flex-shrink-0">
+                                    <h3
+                                        className="text-[16px] sm:text-[18px] xl:text-[20px] font-heading font-semibold text-brand-dark group-hover:text-brand-accent transition-colors duration-300 tracking-tight text-center"
+                                        style={{ textWrap: 'balance' }}
+                                    >
+                                        {sub.title}
+                                    </h3>
                                 </div>
 
-                                <h3 className="text-lg lg:text-xl font-heading font-semibold text-brand-dark leading-snug mb-4 group-hover:text-brand-accent transition-colors duration-300">
-                                    {sub.title}
-                                </h3>
-
-                                <p className="text-[15px] text-brand-dark/65 leading-relaxed mb-3">
-                                    {sub.line1}
-                                </p>
-                                <p className="text-[15px] text-brand-dark/50 leading-relaxed">
-                                    {sub.line2}
-                                </p>
+                                <div className="flex-grow space-y-4">
+                                    <p className="text-[15px] sm:text-base text-brand-dark/75 leading-relaxed text-left">
+                                        {sub.line1}
+                                    </p>
+                                    <p className="text-[15px] sm:text-base text-brand-dark/60 leading-relaxed text-left">
+                                        {sub.line2}
+                                    </p>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
@@ -190,8 +174,8 @@ export default function ServiceDetailPage({ service }: { service: ServiceDetail 
                                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-semibold text-brand-lightest leading-snug mb-3">
                                     Ready to get started?
                                 </h3>
-                                <p className="text-brand-lightest/60 text-base sm:text-lg max-w-lg leading-relaxed">
-                                    Let our experts help you navigate {service.title.toLowerCase()} with confidence and clarity.
+                                <p className="text-brand-lightest/60 text-base sm:text-lg max-w-lg leading-relaxed text-left">
+                                    Our experienced professionals provide comprehensive support for Accounts, Audit, Income Tax, GST, Compliance and other financial services to meet your business needs.
                                 </p>
                             </div>
                             <button

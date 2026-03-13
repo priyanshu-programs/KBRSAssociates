@@ -34,34 +34,35 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="order-1 lg:order-2 flex flex-col items-start w-full"
+            className="order-1 lg:order-2 flex flex-col items-center w-full text-center"
           >
-            <div className="flex items-center gap-4 sm:gap-6 mb-6">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-medium text-brand-dark tracking-tight capitalize">
+            <div className="flex items-center justify-center gap-4 sm:gap-6 mb-6 w-full">
+              <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/30 rounded-full" />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-medium text-brand-dark tracking-tight capitalize whitespace-nowrap">
                 About K B R S
               </h2>
-              <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/50 rounded-full" />
+              <div className="h-[2px] w-8 sm:w-16 bg-brand-accent/30 rounded-full" />
             </div>
 
-            <p className="text-[clamp(14px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide mb-8">
-              We deliver comprehensive, technology-driven, and client-focused financial solutions.
+            <p className="text-[clamp(14px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide mb-8 max-w-2xl text-justify">
+              We deliver comprehensive, technology-driven and client-focused financial solutions.
             </p>
 
-            <div className="space-y-6 text-lg text-brand-dark/70 leading-relaxed">
+            <div className="space-y-6 text-lg text-brand-dark/70 leading-relaxed text-justify max-w-2xl">
               <p>
-                <span className="font-bold">K B R S</span> is a progressive Chartered Accountancy firm established by two dynamic finance professionals with a shared vision—to deliver comprehensive, technology-driven, and client-focused financial solutions.
+                <span className="font-bold">K B R S</span> is a progressive Chartered Accountancy firm established by two dynamic finance professionals with a shared vision—to deliver comprehensive, technology-driven and client-focused financial solutions.
               </p>
               <p>
-                With over three decades of combined experience across global banking, taxation, audit, compliance, and advisory domains, the firm offers an integrated suite of services tailored for <span className="font-semibold">Individuals, Corporates, LLPs, Partnership Firms, Trusts, and Societies</span>.
+                With over three decades of combined experience across global banking, taxation, audit, compliance and advisory domains, the firm offers an integrated suite of services tailored for <span className="font-semibold">Individuals, Corporates, LLPs, Partnership Firms, Trusts and Societies</span>.
               </p>
             </div>
 
-            <div className="mt-12 grid grid-cols-2 gap-8 pt-8 border-t border-brand-dark/10">
-              <div>
+            <div className="mt-12 grid grid-cols-2 gap-8 pt-8 border-t border-brand-dark/10 w-full max-w-2xl">
+              <div className="text-center">
                 <p className="text-4xl font-heading font-bold text-brand-accent mb-2">30+</p>
                 <p className="text-sm font-medium text-brand-dark">Years Combined Experience</p>
               </div>
-              <div>
+              <div className="text-center">
                 <p className="text-4xl font-heading font-bold text-brand-accent mb-2">100%</p>
                 <p className="text-sm font-medium text-brand-dark">Client Commitment</p>
               </div>
