@@ -28,7 +28,7 @@ const team: TeamMember[] = [
     bio: [
       <>Komal is an accomplished Chartered Accountant and Company Secretary with a robust background in <span className="font-bold">Auditing, Taxation, GST Litigation and Financial Compliance</span>.</>,
       <>She brings over a decade of experience in advising clients on complex statutory and regulatory matters.</>,
-      <>Her leadership in <span className="font-bold">Indirect Taxation</span> earned her the role of <span className="font-medium">Special Invitee to the GST & Indirect Taxes Committee</span>. She is also a <span className="font-bold">Certified Information System Auditor (DISA)</span> and <span className="font-bold">Certified Social Auditor</span>, with strong credentials in Bank Audits and Governance.</>,
+      <>Her leadership in <span className="font-bold">Indirect Taxation</span> earned her the role of <span className="font-bold">Special Invitee to the GST & Indirect Taxes Committee of ICAI (2024)</span>. She is also a <span className="font-bold">Certified Information System Auditor (DISA)</span> and <span className="font-bold">Certified Social Auditor</span>, with strong credentials in Bank Audits and Governance.</>,
       <>A passionate advocate for financial literacy and women&apos;s empowerment, she regularly conducts educational workshops and delivers lectures at professional forums. She currently serves as an <span className="font-bold">Independent Woman Director on listed companies</span>, offering strategic insight into governance, risk management and financial oversight.</>,
     ],
     image: 'https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1773132667/K_vbu5ur.jpg',
@@ -157,10 +157,10 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
           border: '1px solid rgba(226,236,247,0.16)',
           boxShadow: '0 40px 100px rgba(8,22,44,0.8), inset 0 1px 0 rgba(226,236,247,0.14)',
         }}
-        initial={{ opacity: 0, scale: 0.86, y: 32 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9, y: 16 }}
-        transition={{ type: 'spring', damping: 30, stiffness: 130, mass: 1.1 }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
       >
         {/* Close */}
         <button onClick={onClose} aria-label="Close"
