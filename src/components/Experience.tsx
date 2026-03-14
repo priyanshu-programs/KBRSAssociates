@@ -21,7 +21,7 @@ const stats = [
     {
         label: "Service Portfolio",
         value: "25+",
-        unit: "Specialties"
+        unit: "Specialities"
     }
 ];
 
