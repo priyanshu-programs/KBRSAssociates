@@ -21,24 +21,30 @@ export const metadata: Metadata = {
     metadataBase: new URL("https://cakbrs.com"),
     title: "K B R S & Associates | Chartered Accountants",
     description:
-        "K B R S & Associates — Chartered Accountants offering registration services, GST, audit, income tax, and corporate law solutions.",
+        "K B R S & Associates — Chartered Accountants offering company registration, GST filing, audit, income tax, and corporate law services. Trusted professional CA firm.",
     icons: {
-        icon: "/logo.jpg",
+        icon: [
+            { url: "/favicon.ico", sizes: "48x48" },
+            { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+            { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        ],
+        apple: "/apple-touch-icon.png",
     },
+    manifest: "/manifest.json",
     openGraph: {
         title: "K B R S & Associates | Chartered Accountants",
         description:
-            "Chartered Accountants offering registration services, GST, audit, income tax, and corporate law solutions.",
+            "Chartered Accountants offering company registration, GST filing, audit, income tax, and corporate law services. Trusted professional CA firm.",
         url: "https://cakbrs.com",
         siteName: "K B R S & Associates",
         type: "website",
         images: [{ url: "/logo.jpg", width: 400, height: 400, alt: "K B R S & Associates Logo" }],
     },
     twitter: {
-        card: "summary",
+        card: "summary_large_image",
         title: "K B R S & Associates | Chartered Accountants",
         description:
-            "Chartered Accountants offering registration services, GST, audit, income tax, and corporate law solutions.",
+            "Chartered Accountants offering company registration, GST filing, audit, income tax, and corporate law services. Trusted professional CA firm.",
     },
     alternates: {
         canonical: "https://cakbrs.com",
@@ -64,7 +70,7 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
-                            "@type": "ProfessionalService",
+                            "@type": ["ProfessionalService", "Organization"],
                             name: "K B R S & Associates",
                             url: "https://cakbrs.com",
                             logo: "https://cakbrs.com/logo.jpg",
