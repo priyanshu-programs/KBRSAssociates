@@ -28,6 +28,20 @@ export default function ServiceDetailPage({ service }: { service: ServiceDetail 
 
     return (
         <main className="min-h-screen relative" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        itemListElement: [
+                            { "@type": "ListItem", position: 1, name: "Home", item: "https://cakbrs.com" },
+                            { "@type": "ListItem", position: 2, name: "Services", item: "https://cakbrs.com/#services" },
+                            { "@type": "ListItem", position: 3, name: service.title },
+                        ],
+                    }),
+                }}
+            />
             {/* ─── HERO ─── */}
             <section className="relative w-full min-h-[450px] md:min-h-[550px] lg:min-h-[650px] flex items-center justify-center overflow-hidden">
                 {/* Background image */}
