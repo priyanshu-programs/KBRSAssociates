@@ -2,7 +2,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import ScrollStack, { ScrollStackItem } from './ScrollStack/ScrollStack';
 import { Users, Handshake, Scale, Building, Globe, Home } from 'lucide-react';
 
 const clients = [
@@ -68,7 +67,7 @@ export default function CustomerType() {
           style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
       </div>
 
-      <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <motion.div
@@ -93,61 +92,67 @@ export default function CustomerType() {
           </div>
         </motion.div>
 
-        {/* ScrollStack Cards */}
-        <ScrollStack
-          itemStackDistance={35}
-          baseScale={0.88}
-        >
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {clients.map((client) => (
-            <ScrollStackItem key={client.id}>
-              <div
-                className="relative overflow-hidden rounded-[1.25rem] sm:rounded-[1.5rem] lg:rounded-[2.5rem] p-5 sm:p-10 lg:p-12 shadow-[0_8px_40px_rgba(0,0,0,0.04)] border border-brand-dark/5 bg-gray-900 flex flex-col justify-center h-[50vh] sm:h-[60vh] min-h-[280px] sm:min-h-[350px] max-h-[450px] sm:max-h-[550px] w-full"
-              >
-                {/* Background Image — Next.js Image for lazy loading & WebP */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: (Number(client.id) - 1) * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+              key={client.id}
+              className="group relative overflow-hidden rounded-[2rem] bg-brand-dark h-[280px] sm:h-[320px] lg:h-[360px] cursor-pointer shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-shadow duration-500 "
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0">
                 <Image
                   src={client.image}
                   alt={client.title}
                   fill
-                  sizes="(max-width: 1280px) 100vw, 1024px"
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
                 />
+              </div>
 
-                {/* Dark Gradient Overlay for high contrast */}
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-900/85 via-gray-900/65 to-gray-900/40 pointer-events-none" />
-                <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+              {/* Overlay Gradients */}
+              <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/10 via-brand-dark/40 to-brand-dark/95 transition-opacity duration-700 z-10 pointer-events-none" />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-700 z-10 pointer-events-none" />
 
-                {/* Accent line */}
-                <div
-                  className="absolute top-0 left-0 w-full h-1.5 lg:h-2 rounded-t-[1.5rem] lg:rounded-t-[2.5rem] z-10"
-                  style={{ background: `linear-gradient(90deg, ${client.accent}, ${client.accent}88)` }}
-                />
+              {/* Top Accent Line (animated on hover) */}
+              <div
+                className="absolute top-0 left-0 w-full h-1.5 z-20 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] rounded-t-[2rem]"
+                style={{ background: `linear-gradient(90deg, ${client.accent}, ${client.accent}88)` }}
+              />
 
-                <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-10 w-full">
-                  {/* Content (Centered) */}
-                  <div className="flex-1 flex flex-col items-center text-center justify-center w-full h-full gap-5 lg:gap-8">
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0, y: 20 }}
-                      whileInView={{ scale: 1, opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-                      viewport={{ once: true }}
-                      className="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 rounded-full flex items-center justify-center text-brand-lightest border-[1.5px] border-brand-lightest/30 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-110"
-                      style={{ background: `linear-gradient(135deg, ${client.accent}D9, ${client.accent}66)` }}
+              {/* Content */}
+              <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 sm:p-8 pointer-events-none">
+                <div className="flex flex-col h-full justify-between">
+                  {/* Top Header Section */}
+                  <div className="flex justify-end items-start w-full">
+                    <div 
+                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center border border-white/10 bg-white/5 backdrop-blur-md text-white transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-110 group-hover:bg-white/10 group-hover:border-white/30"
+                      style={{ boxShadow: `0 0 20px ${client.accent}20` }}
                     >
-                      <div className="scale-75 lg:scale-100">
+                      <div className="scale-90 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                         {client.icon}
                       </div>
-                    </motion.div>
-                    <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-lightest leading-tight drop-shadow-lg max-w-4xl mx-auto">
+                    </div>
+                  </div>
+
+                  {/* Bottom Text Section */}
+                  <div className="relative text-left transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:-translate-y-2">
+                    <h3 className="text-2xl sm:text-3xl font-heading font-semibold text-white tracking-wide">
                       {client.title}
                     </h3>
                   </div>
-
-
                 </div>
               </div>
-            </ScrollStackItem>
+              
+              {/* Glossy Reflection Effect */}
+              <div className="absolute inset-0 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none bg-gradient-to-tr from-white/5 via-transparent to-transparent" />
+            </motion.div>
           ))}
-        </ScrollStack>
+        </div>
 
       </div>
     </section>

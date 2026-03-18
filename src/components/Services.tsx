@@ -85,6 +85,7 @@ const ServiceCard = memo(function ServiceCard({
   index,
   isActive,
   isAnyActive,
+  isMobile,
   onMouseEnter,
   onClick,
 }: {
@@ -92,6 +93,7 @@ const ServiceCard = memo(function ServiceCard({
   index: number;
   isActive: boolean;
   isAnyActive: boolean;
+  isMobile: boolean;
   onMouseEnter: () => void;
   onClick: () => void;
 }) {
@@ -115,18 +117,19 @@ const ServiceCard = memo(function ServiceCard({
       // on top of the CSS flex transition that was already handling expansion.
       // CSS `transition-[flex]` alone handles this perfectly without any JS cost.
       className={[
-        'relative overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] cursor-pointer',
+        'relative overflow-hidden rounded-[2rem] lg:rounded-[2.5rem]',
+        isMobile ? '' : 'cursor-pointer',
         'transition-[flex,box-shadow] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]',
-        'transform-gpu will-change-[flex]',
+        'transform-gpu',
         'shadow-[0_4px_30px_rgba(0,0,0,0.03)] border border-brand-lightest/10',
         'flex flex-col',
-        isAnyActive
-          ? isActive
-            // On mobile (flex-col layout) let the card grow to its natural content height;
-            // on lg+ keep the fixed flex-ratio accordion behaviour.
-            ? 'lg:flex-[10] shadow-xl'
-            : 'flex-[1.5] lg:flex-1'
-          : 'flex-1 hover:shadow-md',
+        isMobile
+          ? '' // On mobile all cards show content at natural height, no flex ratios
+          : isAnyActive
+            ? isActive
+              ? 'lg:flex-[10] shadow-xl'
+              : 'flex-[1.5] lg:flex-1'
+            : 'flex-1 hover:shadow-md',
       ].join(' ')}
     >
       {/* Background Image */}
@@ -155,7 +158,7 @@ const ServiceCard = memo(function ServiceCard({
         className={[
           'absolute inset-0 flex flex-col items-center justify-center p-6 lg:p-8',
           'transition-opacity duration-300 transform-gpu',
-          !isAnyActive ? 'opacity-100' : 'opacity-0 pointer-events-none',
+          isMobile || isAnyActive ? 'opacity-0 pointer-events-none' : 'opacity-100',
         ].join(' ')}
       >
         {/* Removed backdrop-blur — creates expensive compositor layer per card */}
@@ -172,7 +175,7 @@ const ServiceCard = memo(function ServiceCard({
         className={[
           'absolute inset-0 flex flex-col items-center justify-center p-4 lg:p-6',
           'transition-opacity duration-300 transform-gpu',
-          isAnyActive && !isActive ? 'opacity-100' : 'opacity-0 pointer-events-none',
+          !isMobile && isAnyActive && !isActive ? 'opacity-100' : 'opacity-0 pointer-events-none',
         ].join(' ')}
       >
         <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-brand-lightest/20 border border-brand-lightest/30 shadow-sm flex items-center justify-center text-brand-lightest mb-6 shrink-0">
@@ -200,7 +203,7 @@ const ServiceCard = memo(function ServiceCard({
           'lg:absolute lg:inset-0 w-full lg:h-full p-8 lg:p-10 xl:p-14',
           'flex flex-col xl:flex-row gap-6 xl:gap-12',
           'transition-opacity duration-300 transform-gpu',
-          isActive ? 'opacity-100 delay-150' : 'opacity-0 pointer-events-none',
+          isMobile || isActive ? 'opacity-100 delay-150' : 'opacity-0 pointer-events-none',
         ].join(' ')}
       >
         {/* Left Block */}
@@ -256,8 +259,8 @@ export default function Services() {
     const check = () => {
       const mobile = window.matchMedia('(max-width: 1023px)').matches;
       setIsMobile(mobile);
-      // Default first card open on mobile; clear on desktop.
-      setActiveIndex(mobile ? 0 : null);
+      // On mobile all cards show content by default; on desktop start closed.
+      setActiveIndex(null);
     };
     check();
     window.addEventListener('resize', check);
@@ -279,7 +282,7 @@ export default function Services() {
   }, [isMobile]);
 
   return (
-    <section id="services" className="pt-0 pb-24 lg:pb-32 text-brand-dark overflow-hidden relative" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
+    <section id="services" className="pt-16 lg:pt-0 pb-24 lg:pb-32 text-brand-dark overflow-hidden relative" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
 
       {/* Minimal decorative blobs */}
       <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
@@ -331,8 +334,9 @@ export default function Services() {
               index={index}
               isActive={activeIndex === index}
               isAnyActive={activeIndex !== null}
+              isMobile={isMobile}
               onMouseEnter={() => handleMouseEnter(index)}
-              onClick={() => handleClick(index)}
+              onClick={() => { if (!isMobile) handleClick(index); }}
             />
           ))}
         </motion.div>

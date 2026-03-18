@@ -1,6 +1,6 @@
 "use client";
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'motion/react';
 
 const words = [
   { text: "To", highlight: false },
@@ -31,62 +31,59 @@ const words = [
   { text: "solutions.", highlight: false },
 ];
 
+// Batch words into groups of ~5 to reduce hook count from 31 to 6
+const BATCH_SIZE = 5;
+const wordGroups: { words: typeof words; groupIndex: number }[] = [];
+for (let i = 0; i < words.length; i += BATCH_SIZE) {
+  wordGroups.push({
+    words: words.slice(i, i + BATCH_SIZE),
+    groupIndex: wordGroups.length,
+  });
+}
+
 export default function Vision() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
 
-  const { scrollYProgress: sectionScrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const tickerX = useTransform(sectionScrollYProgress, [0, 1], ["0%", "-50%"]);
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 1023px)');
+    const update = () => setIsMobile(mql.matches);
+    update();
+    mql.addEventListener('change', update);
+    return () => mql.removeEventListener('change', update);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: textRef,
-    offset: ["start 0.9", "center 0.4"],
+    offset: isMobile ? ["start 0.95", "center 0.55"] : ["start 0.9", "center 0.4"],
   });
 
-  // Increased stiffness + damping = spring settles faster with fewer iterations per frame.
-  // restDelta raised slightly: stops the spring earlier, reducing unnecessary rAF frames.
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: isMobile ? 140 : 100,
+    damping: isMobile ? 35 : 30,
     restDelta: 0.003,
   });
 
   return (
-    <section ref={sectionRef} className="pt-10 pb-20 sm:pt-16 sm:pb-32 lg:pt-24 lg:pb-48 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
+    <section ref={sectionRef} className="pt-16 pb-16 sm:pt-24 sm:pb-32 lg:pt-32 lg:pb-40 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #ECF3FB 0%, #daeaf8 50%, #c9ddef 100%)' }}>
 
       {/* Minimal decorative blobs */}
       <div className="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
         style={{ background: 'radial-gradient(circle, #3179AC 0%, transparent 70%)' }} />
-      <div className="pointer-events-none absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-20"
-        style={{ background: 'radial-gradient(circle, #164161 0%, transparent 70%)' }} />
 
-      {/* Huge Sliding Ticker for "OUR VISION" */}
-      <div className="w-full flex mb-12 sm:mb-20 md:mb-28 lg:mb-40 relative z-10">
-        <motion.div
-          className="flex whitespace-nowrap w-max"
-          style={{ x: tickerX }}
+      {/* Animated Static Heading for "Our Vision" */}
+      <div className="w-full flex justify-center mb-6 sm:mb-8 md:mb-12 lg:mb-16 relative z-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl md:text-5xl lg:text-7xl font-heading font-medium text-brand-dark tracking-tight capitalize"
         >
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex items-center gap-8 md:gap-12 pr-8 md:pr-12">
-              <h2 className="text-[3.5rem] md:text-[6rem] lg:text-[9vw] font-heading font-medium text-brand-accent/30 tracking-tighter capitalize leading-none">
-                Our Vision
-              </h2>
-              <span className="text-[2rem] md:text-[3.5rem] lg:text-[4vw] text-brand-accent/50 mb-2 md:mb-4">
-                ✦
-              </span>
-              <h2 className="text-[3.5rem] md:text-[6rem] lg:text-[9vw] font-heading font-medium text-brand-dark tracking-tighter capitalize leading-none">
-                Our Vision
-              </h2>
-              <span className="text-[2rem] md:text-[3.5rem] lg:text-[4vw] text-brand-accent/50 mb-2 md:mb-4">
-                ✦
-              </span>
-            </div>
-          ))}
-        </motion.div>
+          Our Vision
+        </motion.h2>
       </div>
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
@@ -101,11 +98,24 @@ export default function Vision() {
             className="w-12 h-px bg-brand-accent/40 mx-auto mb-12 origin-left"
           />
 
-          {/* Scroll-driven word-by-word text reveal */}
+          {/* Scroll-driven word-by-word text reveal — batched into groups */}
           <p
             ref={textRef}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-heading font-medium leading-[1.35] text-center"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-heading font-medium leading-[1.35] text-center max-w-4xl mx-auto"
           >
+            {prefersReducedMotion ? (
+              // Static render — no scroll animation overhead
+              <>
+                <span className="text-brand-gray/30 leading-none inline-block align-bottom">&ldquo;</span>{" "}
+                {words.map((word, i) => (
+                  <span key={i} className={`inline-block mb-2 sm:mb-3 ${word.highlight ? 'text-brand-accent' : 'text-brand-dark'}`}>
+                    {word.text}{" "}
+                  </span>
+                ))}
+                <span className="text-brand-gray/30 leading-none inline-block">&rdquo;</span>
+              </>
+            ) : (
+            <>
             <motion.span
               className="text-brand-gray/30 leading-none inline-block align-bottom"
               style={{ opacity: useTransform(smoothProgress, [0, 0.05], [0.1, 0.4]) }}
@@ -113,38 +123,18 @@ export default function Vision() {
               &ldquo;
             </motion.span>
             {" "}
-            {words.map((word, i) => {
-              const start = i / words.length;
-              const overlapEnd = start + (3 / words.length);
-              const end = Math.min(overlapEnd, 1.0);
-
-              if (i === words.length - 1) {
-                return (
-                  <span key={i} className="whitespace-nowrap inline-flex items-end">
-                    <Word progress={smoothProgress} range={[start, end]} isHighlight={word.highlight}>
-                      {word.text}
-                    </Word>
-                    <motion.span
-                      className="text-brand-gray/30 leading-none pl-[0.1em] inline-block"
-                      style={{ opacity: useTransform(smoothProgress, [0.95, 1], [0, 0.4]) }}
-                    >
-                      &rdquo;
-                    </motion.span>
-                  </span>
-                );
-              }
-
-              return (
-                <span key={i}>
-                  <span className="inline-block mb-2 sm:mb-3 align-bottom">
-                    <Word progress={smoothProgress} range={[start, end]} isHighlight={word.highlight}>
-                      {word.text}
-                    </Word>
-                  </span>
-                  {" "}
-                </span>
-              );
-            })}
+            {wordGroups.map((group) => (
+              <WordGroup
+                key={group.groupIndex}
+                words={group.words}
+                groupIndex={group.groupIndex}
+                totalGroups={wordGroups.length}
+                progress={smoothProgress}
+                isLastGroup={group.groupIndex === wordGroups.length - 1}
+              />
+            ))}
+            </>
+            )}
           </p>
         </div>
       </div>
@@ -152,38 +142,70 @@ export default function Vision() {
   );
 }
 
-/* ── Word Component — opacity + Y lift reveal ── */
-const Word = ({
-  children,
+/* ── WordGroup — single useTransform per batch of ~5 words ── */
+const WordGroup = ({
+  words: groupWords,
+  groupIndex,
+  totalGroups,
   progress,
-  range,
-  isHighlight,
+  isLastGroup,
 }: {
-  children: string;
+  words: typeof words;
+  groupIndex: number;
+  totalGroups: number;
   progress: any;
-  range: [number, number];
-  isHighlight: boolean;
+  isLastGroup: boolean;
 }) => {
-  const opacity = useTransform(progress, range, [0.07, 1]);
-  const y = useTransform(progress, range, ["0.4em", "0em"]);
-  const baseColor = isHighlight ? "text-brand-accent" : "text-brand-dark";
+  const start = groupIndex / totalGroups;
+  const end = Math.min(start + (2 / totalGroups), 1.0);
+  const opacity = useTransform(progress, [start, end], [0.07, 1]);
+  const y = useTransform(progress, [start, end], ["0.4em", "0em"]);
 
   return (
-    <span className="relative inline-block">
-      {/* ghost placeholder to prevent layout shift */}
-      <span className="invisible">{children}</span>
-      <motion.span
-        style={{
-          opacity,
-          y,
-          position: "absolute",
-          left: 0,
-          top: 0,
-        }}
-        className={baseColor}
-      >
-        {children}
-      </motion.span>
-    </span>
+    <>
+      {groupWords.map((word, i) => {
+        const baseColor = word.highlight ? "text-brand-accent" : "text-brand-dark";
+        const isLastWord = isLastGroup && i === groupWords.length - 1;
+
+        if (isLastWord) {
+          return (
+            <span key={`${groupIndex}-${i}`} className="whitespace-nowrap inline-flex items-end mb-2 sm:mb-3">
+              <span className="relative inline-block">
+                <span className="invisible">{word.text}</span>
+                <motion.span
+                  style={{ opacity, y, position: "absolute", left: 0, top: 0 }}
+                  className={baseColor}
+                >
+                  {word.text}
+                </motion.span>
+              </span>
+              <motion.span
+                className="text-brand-gray/30 leading-none pl-[0.1em] inline-block"
+                style={{ opacity: useTransform(progress, [0.95, 1], [0, 0.4]) }}
+              >
+                &rdquo;
+              </motion.span>
+            </span>
+          );
+        }
+
+        return (
+          <span key={`${groupIndex}-${i}`}>
+            <span className="inline-block mb-2 sm:mb-3 align-bottom">
+              <span className="relative inline-block">
+                <span className="invisible">{word.text}</span>
+                <motion.span
+                  style={{ opacity, y, position: "absolute", left: 0, top: 0 }}
+                  className={baseColor}
+                >
+                  {word.text}
+                </motion.span>
+              </span>
+            </span>
+            {" "}
+          </span>
+        );
+      })}
+    </>
   );
 };
