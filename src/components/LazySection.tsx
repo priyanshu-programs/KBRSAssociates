@@ -15,7 +15,7 @@ export default function LazySection({ children }: { children: ReactNode }) {
           observer.disconnect();
         }
       },
-      { rootMargin: '1500px' }
+      { rootMargin: '300px' }
     );
     observer.observe(el);
     return () => observer.disconnect();

@@ -119,13 +119,12 @@ function SocialBtn({
       <span
         className="w-10 h-10 rounded-full flex items-center justify-center text-brand-lightest"
         style={{
-          background: 'rgba(226,236,247,0.1)',
+          background: 'rgba(20,50,80,0.45)',
           border: '1px solid rgba(226,236,247,0.2)',
-          backdropFilter: 'blur(8px)',
           transition: 'background 0.25s, transform 0.2s',
         }}
         onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(49,121,172,0.6)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(226,236,247,0.1)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(20,50,80,0.45)'; e.currentTarget.style.transform = 'translateY(0)'; }}
       >
         {icon}
       </span>
@@ -175,7 +174,7 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
           style={{ background: '#c8d8e8' }}
           transition={{ type: 'spring', damping: 32, stiffness: 140, mass: 1.2 }}
         >
-          <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, 500px" quality={100} className="object-cover object-[center_20%]" />
+          <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, 500px" quality={80} className="object-cover object-[center_20%]" />
         </motion.div>
 
         {/* RIGHT — info */}
@@ -285,7 +284,7 @@ function ProfileCard({
           animate={{ y: hovered ? -14 : 0, scale: hovered ? 1.04 : 1 }}
           transition={{ type: 'spring', damping: 24, stiffness: 180, mass: 0.9 }}
         >
-          <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, 500px" quality={100} className="object-cover object-[center_20%]" style={{ transform: 'scale(1.30)' }} />
+          <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, 500px" quality={80} className="object-cover object-[center_20%]" style={{ transform: 'scale(1.30)' }} />
         </motion.div>
 
       </motion.div>

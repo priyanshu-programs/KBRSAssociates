@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import { motion } from 'motion/react';
 
 export default function About() {
@@ -21,11 +22,16 @@ export default function About() {
             className="order-2 lg:order-1 relative"
           >
             <div className="absolute -inset-4 bg-brand-accent/5 rounded-3xl -z-10 transform -rotate-3"></div>
-            <img
-              src="https://res.cloudinary.com/ddooeqf5m/image/upload/v1772983047/Whisk_f47bf8a8ad77fa48c164673cabd98f34dr_ufulms.jpg"
-              alt="Professional financial workspace"
-              className="rounded-2xl shadow-2xl object-cover object-[60%_center] w-full h-[300px] sm:h-[450px] lg:h-[600px]"
-            />
+            <div className="relative w-full h-[300px] sm:h-[450px] lg:h-[600px]">
+              <Image
+                src="https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772983047/Whisk_f47bf8a8ad77fa48c164673cabd98f34dr_ufulms.jpg"
+                alt="Professional financial workspace"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={80}
+                className="rounded-2xl shadow-2xl object-cover object-[60%_center]"
+              />
+            </div>
 
           </motion.div>
 
@@ -45,7 +51,7 @@ export default function About() {
             </div>
 
             <p className="text-[clamp(14px,1.5vw,1.25rem)] text-brand-dark/70 font-medium tracking-wide mb-8 max-w-2xl text-justify">
-              We deliver comprehensive, technology-driven and client-focused financial solutions.
+              We deliver comprehensive, technology-driven and client-focused financial solutions. Led by dynamic finance professionals with a shared vision.
             </p>
 
             <div className="space-y-6 text-lg text-brand-dark/70 leading-relaxed text-justify max-w-2xl">

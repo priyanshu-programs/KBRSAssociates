@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, Variants, AnimatePresence } from 'motion/react';
+import { motion, Variants, AnimatePresence, useReducedMotion } from 'motion/react';
 import { ArrowRight, Mouse } from 'lucide-react';
 import { useLenis } from 'lenis/react';
 
@@ -68,14 +68,16 @@ const HERO_IMAGES = [
 
 export default function Hero() {
   const lenis = useLenis();
+  const prefersReducedMotion = useReducedMotion();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [prefersReducedMotion]);
 
   const handleScrollToFooter = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -121,11 +123,11 @@ export default function Hero() {
                   className="absolute inset-0 w-full h-full"
                   initial={{ scale: 1 }}
                   animate={{
-                    scale: isActive ? 1.15 : 1
+                    scale: prefersReducedMotion ? 1 : (isActive ? 1.08 : 1)
                   }}
                   transition={{
                     scale: isActive
-                      ? { duration: 25, ease: "easeOut" }
+                      ? { duration: 8, ease: "easeOut" }
                       : { duration: 0, delay: 1.5 } // Keep scale frozen for 1.5s during fade-out, then reset
                   }}
                 >
@@ -134,6 +136,7 @@ export default function Hero() {
                     alt={`Hero Background ${index + 1}`}
                     fill
                     priority={index === 0}
+                    loading={index === 0 ? "eager" : "lazy"}
                     sizes="(max-width: 1920px) 100vw, 1920px"
                     className="object-cover object-center md:object-top origin-center"
                   />

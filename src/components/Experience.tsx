@@ -83,9 +83,9 @@ export default function Experience() {
     };
 
     return (
-        <section id="experience" className="w-full bg-section-a pt-12 sm:pt-20 lg:pt-32 xl:pt-40 pb-0 relative overflow-hidden">
+        <section id="experience" className="w-full bg-section-a pt-0 pb-6 sm:py-16 lg:py-20 xl:py-24 relative overflow-hidden">
 
-            {/* Container holding the Left-Anchored Panel, Right Content, and the Bottom Image */}
+            {/* Container holding the Left-Anchored Panel, Right Content */}
             <motion.div
                 variants={staggerContainer}
                 initial="hidden"
@@ -94,7 +94,7 @@ export default function Experience() {
                 className="w-full relative z-20"
             >
                 {/* Horizontal Split for Left Panel & Right Content */}
-                <div className="flex flex-col xl:flex-row items-stretch w-full max-w-[1920px] mx-auto xl:pr-[1.1875rem] relative xl:gap-[15.375rem] z-20">
+                <div className="flex flex-col xl:flex-row items-stretch w-full max-w-[1920px] mx-auto xl:pr-[1.1875rem] relative xl:gap-[8rem] z-20">
 
                     {/* ── LEFT PANEL (~769px by 311px) ── */}
                     <motion.div
@@ -107,28 +107,28 @@ export default function Experience() {
 
                         {/* Card Background */}
                         <div
-                            className="absolute inset-0 rounded-none xl:rounded-tr-[1rem] z-10 bg-brand-dark"
+                            className="absolute inset-0 rounded-none xl:rounded-r-[1.5rem] z-10 bg-brand-dark"
                         />
 
-                        <div className="relative z-20 flex flex-row flex-wrap sm:flex-nowrap items-center justify-between w-full h-full gap-6 sm:gap-6">
+                        <div className="relative z-20 flex flex-col sm:flex-row flex-wrap sm:flex-nowrap items-center justify-between w-full h-full gap-12 sm:gap-6 py-4 sm:py-0">
                             {stats.map((stat, i) => (
-                                <div key={i} className="flex flex-col items-center text-center flex-1 min-w-[90px]">
+                                <div key={i} className="flex flex-col items-center text-center flex-1 min-w-[120px]">
 
                                     {/* 1. Label moved to the top as a heading */}
-                                    <h3 className="text-brand-lightest/75 text-[12px] sm:text-[15px] md:text-[17px] font-medium tracking-wide mb-2 sm:mb-6">
+                                    <h3 className="text-brand-lightest/75 text-[14px] sm:text-[15px] md:text-[17px] font-medium tracking-wide mb-2 sm:mb-6">
                                         {stat.label}
                                     </h3>
 
                                     {/* 2. Value dynamically counts up with subtle gradient */}
                                     <span
                                         className="font-heading font-extralight bg-clip-text text-transparent bg-gradient-to-br from-brand-lightest via-brand-lightest/90 to-brand-lightest/50 leading-tight pb-1 sm:pb-2 mb-1 sm:mb-2 inline-block relative -ml-1"
-                                        style={{ fontSize: 'clamp(2.25rem, 6vw, 5.5rem)' }}
+                                        style={{ fontSize: 'clamp(2.75rem, 6vw, 5.5rem)' }}
                                     >
                                         <AnimatedStat text={stat.value} />
                                     </span>
 
                                     {/* 3. Unit preserved below */}
-                                    <span className="text-brand-accent text-[9px] sm:text-[11px] md:text-xs font-bold leading-relaxed uppercase tracking-widest max-w-[160px]">
+                                    <span className="text-[#A3C5EA] text-[10px] sm:text-[11px] md:text-xs font-bold leading-relaxed uppercase tracking-widest max-w-[200px] min-h-[2lh]">
                                         {stat.unit}
                                     </span>
 
@@ -157,12 +157,12 @@ export default function Experience() {
                                 }}
                                 className="mb-12 xl:mb-16 relative z-10"
                             >
-                                <motion.p variants={fadeUpItem} className="text-[#2B3042]/80 text-[15px] sm:text-[17px] font-medium tracking-wide leading-relaxed max-w-md text-justify">
-                                    We deliver comprehensive, technology-driven and client-focused financial solutions.
+                                <motion.p variants={fadeUpItem} className="text-[#2B3042]/80 text-[17px] sm:text-[19px] lg:text-[21px] font-medium tracking-wide leading-relaxed max-w-[500px] lg:max-w-[560px] text-justify">
+                                    We deliver comprehensive, technology-driven and client-focused financial solutions. Led by dynamic finance professionals with a shared vision.
                                 </motion.p>
                             </motion.div>
 
-                            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-10 xl:gap-0 w-full relative z-10">
+                            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-10 xl:gap-0 w-full max-w-[500px] lg:max-w-[560px] relative z-10">
 
                                 {/* Magnetic Expanding Avatars */}
                                 <motion.div variants={fadeUpItem}>
@@ -196,7 +196,7 @@ export default function Experience() {
                                                     alt=""
                                                     fill
                                                     sizes="128px"
-                                                    quality={100}
+                                                    quality={80}
                                                     className="object-cover"
                                                 />
                                             </motion.div>
@@ -246,28 +246,7 @@ export default function Experience() {
 
                 </div>
 
-                {/* Full-width Responsive Image Container */}
-                <motion.div
-                    variants={fadeUpItem}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-10%" }}
-                    className="w-full bg-brand-dark py-[clamp(1.2rem,2vw,1.8125rem)] xl:mt-[-1.8125rem]"
-                >
-                    <div className="w-full max-w-[1920px] mx-auto px-6 sm:px-12 xl:px-0">
-                        <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
-                            <Image
-                                src="https://res.cloudinary.com/ddooeqf5m/image/upload/q_auto,f_auto/v1772987422/pexels-masoodaslami-6546380_tvfomw.jpg"
-                                alt="Corporate Building Setup"
-                                fill
-                                sizes="100vw"
-                                className="object-cover"
-                            />
-                            {/* Brand-colored tint overlay */}
-                            <div className="absolute inset-0 bg-brand-dark/50 pointer-events-none" />
-                        </div>
-                    </div>
-                </motion.div>
+                {/* End of Section layout */}
             </motion.div>
         </section>
     );

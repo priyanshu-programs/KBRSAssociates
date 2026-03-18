@@ -1,10 +1,12 @@
+import dynamic from 'next/dynamic';
 import Hero from '../components/Hero';
 import LazySection from '../components/LazySection';
-import Vision from '../components/Vision';
-import Experience from '../components/Experience';
-import Services from '../components/Services';
-import CustomerType from '../components/CustomerType';
-import Team from '../components/Team';
+
+const Vision = dynamic(() => import('../components/Vision'));
+const Experience = dynamic(() => import('../components/Experience'));
+const Services = dynamic(() => import('../components/Services'));
+const CustomerType = dynamic(() => import('../components/CustomerType'));
+const Team = dynamic(() => import('../components/Team'));
 
 export default function Home() {
     return (
