@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 
 const ReactLenis = dynamic(
@@ -17,11 +17,22 @@ const ReactLenis = dynamic(
 function ScrollToTopOnRouteChange() {
     const pathname = usePathname();
     const lenis = useLenis();
+    const handledPathname = useRef<string | null>(null);
 
     useEffect(() => {
-        // Skip scroll-to-top when there's a pending scroll target — let the Navbar's hash handler manage it
-        if (sessionStorage.getItem('scrollTarget')) return;
-        lenis?.scrollTo(0, { immediate: true });
+        if (handledPathname.current === pathname) return;
+
+        if (sessionStorage.getItem('scrollTarget')) {
+            // Hash navigation pending — Navbar exclusively owns the scroll
+            handledPathname.current = pathname;
+            return;
+        }
+
+        // Regular navigation: scroll to top with Lenis
+        if (lenis) {
+            lenis.scrollTo(0, { immediate: true });
+            handledPathname.current = pathname;
+        }
     }, [pathname, lenis]);
 
     return null;
@@ -32,9 +43,14 @@ export default function SmoothScrolling({
 }: {
     children: React.ReactNode;
 }) {
-    // Tuned for responsiveness: lower lerp = faster response to scroll input.
-    // duration 1.2 (was 1.5) and lerp 0.08 (was 0.1) removes the sluggish "lag" feel
-    // while still keeping silky smooth momentum.
+    // Disable browser scroll restoration to prevent cached positions
+    // from interfering with cross-page hash navigation
+    useEffect(() => {
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+    }, []);
+
     return (
         <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
             <ScrollToTopOnRouteChange />

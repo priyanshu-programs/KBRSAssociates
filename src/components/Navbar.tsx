@@ -1,6 +1,6 @@
 "use client";
 import { Menu, X, Mail } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import Image from 'next/image';
@@ -31,36 +31,77 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle cross-page hash navigation via sessionStorage
-  useEffect(() => {
-    if (pathname === '/') {
-      const hash = sessionStorage.getItem('scrollTarget');
-      if (hash) {
-        sessionStorage.removeItem('scrollTarget');
-        const scrollToHash = () => {
-          const target = document.querySelector(hash) as HTMLElement;
-          if (!target) return false;
-          const top = target.getBoundingClientRect().top + window.scrollY - 96;
-          const duration = getScrollDuration(Math.abs(top - window.scrollY));
-          if (lenis) {
-            lenis.scrollTo(target, { offset: -96, duration });
-          } else {
-            window.scrollTo({ top, behavior: 'smooth' });
-          }
-          return true;
-        };
+  const scrolledRef = useRef(false);
 
-        // Use MutationObserver to wait for the target element to appear in DOM
-        if (!scrollToHash()) {
-          const observer = new MutationObserver(() => {
-            if (scrollToHash()) observer.disconnect();
-          });
-          observer.observe(document.body, { childList: true, subtree: true });
-          // Safety timeout to avoid observing forever
-          setTimeout(() => observer.disconnect(), 5000);
+  // Handle cross-page hash navigation via sessionStorage
+  // This effect is the SOLE owner of scroll during hash navigation —
+  // ScrollToTopOnRouteChange steps aside when scrollTarget is pending
+  useEffect(() => {
+    scrolledRef.current = false;
+    if (pathname !== '/' || !lenis) return;
+    const hash = sessionStorage.getItem('scrollTarget');
+    if (!hash) return;
+
+    // Immediately jump to top so user doesn't see the old page position
+    lenis.scrollTo(0, { immediate: true });
+    window.scrollTo(0, 0);
+
+    // Poll until the target element exists AND its position is stable
+    // (i.e., layout has fully settled — two consecutive reads give the same top).
+    let lastTop = -1;
+    let stableCount = 0;
+    const STABLE_THRESHOLD = 2; // need 2 consecutive matching reads
+    const POLL_INTERVAL = 80;   // ms between polls
+    const MAX_POLLS = 60;       // give up after ~5 seconds
+    let pollCount = 0;
+
+    const pollTimer = setInterval(() => {
+      pollCount++;
+
+      const target = document.querySelector(hash) as HTMLElement;
+      if (!target) {
+        // Element not in DOM yet, keep waiting
+        if (pollCount >= MAX_POLLS) {
+          clearInterval(pollTimer);
+          sessionStorage.removeItem('scrollTarget');
         }
+        return;
       }
-    }
+
+      // Ensure we're at the top for consistent measurements
+      const currentTop = target.getBoundingClientRect().top + window.scrollY;
+
+      if (Math.abs(currentTop - lastTop) < 2) {
+        stableCount++;
+      } else {
+        stableCount = 0;
+      }
+      lastTop = currentTop;
+
+      if (stableCount >= STABLE_THRESHOLD) {
+        // Layout is stable — scroll to the target
+        clearInterval(pollTimer);
+        scrolledRef.current = true;
+        sessionStorage.removeItem('scrollTarget');
+
+        const finalTop = target.getBoundingClientRect().top + window.scrollY - 96;
+        const duration = getScrollDuration(Math.abs(finalTop));
+        lenis.scrollTo(finalTop, { duration });
+      }
+
+      if (pollCount >= MAX_POLLS) {
+        // Gave up waiting for stability, scroll to wherever it is now
+        clearInterval(pollTimer);
+        scrolledRef.current = true;
+        sessionStorage.removeItem('scrollTarget');
+        const fallbackTop = target.getBoundingClientRect().top + window.scrollY - 96;
+        lenis.scrollTo(fallbackTop, { duration: 1.5 });
+      }
+    }, POLL_INTERVAL);
+
+    return () => {
+      clearInterval(pollTimer);
+    };
   }, [pathname, lenis]);
 
   const navLinks = [
@@ -82,7 +123,7 @@ export default function Navbar() {
     if (pathname !== '/') {
       // Store scroll target and navigate without hash to avoid browser's native hash scroll
       sessionStorage.setItem('scrollTarget', href);
-      router.push('/');
+      router.push('/', { scroll: false });
       return;
     }
 

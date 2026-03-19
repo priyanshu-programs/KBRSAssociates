@@ -74,7 +74,7 @@ export default function ServiceDetailPage({ service }: { service: ServiceDetail 
                             <button
                                 onClick={() => {
                                     sessionStorage.setItem('scrollTarget', '#services');
-                                    router.push('/');
+                                    router.push('/', { scroll: false });
                                 }}
                                 className="inline-flex items-center gap-2 text-sm font-medium text-brand-lightest/80 hover:text-brand-lightest transition-all group bg-brand-lightest/10 px-5 py-2.5 rounded-full backdrop-blur-md border border-brand-lightest/20 hover:bg-brand-lightest/20 shadow-lg"
                             >
