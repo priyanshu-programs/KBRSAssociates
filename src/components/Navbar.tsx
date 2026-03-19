@@ -46,21 +46,21 @@ export default function Navbar() {
     lenis.scrollTo(0, { immediate: true });
     window.scrollTo(0, 0);
 
-    // Poll until the target element exists AND its position is stable
-    // (i.e., layout has fully settled — two consecutive reads give the same top).
-    let lastTop = -1;
-    let stableCount = 0;
-    const STABLE_THRESHOLD = 2; // need 2 consecutive matching reads
-    const POLL_INTERVAL = 80;   // ms between polls
-    const MAX_POLLS = 60;       // give up after ~5 seconds
+    // Poll until the target element exists in the DOM, then wait a
+    // short beat for mount animations (e.g. Vision's whileInView y:30→0)
+    // to settle before scrolling.  We scroll to the *element* directly
+    // so Lenis resolves position at scroll-time, immune to earlier shifts.
+    let cancelled = false;
+    const POLL_INTERVAL = 60;
+    const MAX_POLLS = 80; // ~5 s
     let pollCount = 0;
 
     const pollTimer = setInterval(() => {
+      if (cancelled) return;
       pollCount++;
 
       const target = document.querySelector(hash) as HTMLElement;
       if (!target) {
-        // Element not in DOM yet, keep waiting
         if (pollCount >= MAX_POLLS) {
           clearInterval(pollTimer);
           sessionStorage.removeItem('scrollTarget');
@@ -68,38 +68,31 @@ export default function Navbar() {
         return;
       }
 
-      // Ensure we're at the top for consistent measurements
-      const currentTop = target.getBoundingClientRect().top + window.scrollY;
+      // Element found — stop polling
+      clearInterval(pollTimer);
 
-      if (Math.abs(currentTop - lastTop) < 2) {
-        stableCount++;
-      } else {
-        stableCount = 0;
-      }
-      lastTop = currentTop;
+      // Let initial layout + CSS/framer-motion animations settle
+      // (Vision h2 whileInView runs for ~800 ms, other sections ~700 ms)
+      const SETTLE_DELAY = 350; // ms — enough for the bulk of the animation
 
-      if (stableCount >= STABLE_THRESHOLD) {
-        // Layout is stable — scroll to the target
-        clearInterval(pollTimer);
-        scrolledRef.current = true;
-        sessionStorage.removeItem('scrollTarget');
+      setTimeout(() => {
+        if (cancelled) return;
+        // Use requestAnimationFrame so we measure after the next paint
+        requestAnimationFrame(() => {
+          if (cancelled) return;
+          scrolledRef.current = true;
+          sessionStorage.removeItem('scrollTarget');
 
-        const finalTop = target.getBoundingClientRect().top + window.scrollY - 96;
-        const duration = getScrollDuration(Math.abs(finalTop));
-        lenis.scrollTo(finalTop, { duration });
-      }
-
-      if (pollCount >= MAX_POLLS) {
-        // Gave up waiting for stability, scroll to wherever it is now
-        clearInterval(pollTimer);
-        scrolledRef.current = true;
-        sessionStorage.removeItem('scrollTarget');
-        const fallbackTop = target.getBoundingClientRect().top + window.scrollY - 96;
-        lenis.scrollTo(fallbackTop, { duration: 1.5 });
-      }
+          const top = target.getBoundingClientRect().top + window.scrollY - 96;
+          const duration = getScrollDuration(Math.abs(top));
+          // Scroll to the element directly — Lenis recalculates position
+          lenis.scrollTo(target, { offset: -96, duration });
+        });
+      }, SETTLE_DELAY);
     }, POLL_INTERVAL);
 
     return () => {
+      cancelled = true;
       clearInterval(pollTimer);
     };
   }, [pathname, lenis]);
